@@ -52,6 +52,12 @@
     }
 </style>
 
+
+
+
+
+
+
 @extends('layouts.app')
 
 @section('content')
@@ -67,34 +73,150 @@
             <button class="tablinks" onclick="openTab(event, 'Ciencias')">Ciencias</button>
         </div>
 
-        <form id="quizForm">
-            <div id="Lenguas" class="tabcontent">
-                <h2>Lenguas</h2>
-                <div id="LenguasQuestions"></div>
-                <button type="button" onclick="calculateScore('Lenguas')">Enviar</button>
-                <div id="resultLenguas" style="display:none;">
-                    <h2>Tu puntaje es: <span id="scoreLenguas"></span>/3</h2>
-                </div>
-            </div>
+        <div id="Lenguas" class="tabcontent">
+            <h2>Lenguas</h2>
+            <button onclick="showContent('Lenguas', 'lecciones')">Ver Lecciones</button>
+            <button onclick="showContent('Lenguas', 'formulario')">Ir al Formulario</button>
+            <div id="LenguasLecciones" class="content-section" style="display:none;">
 
-            <div id="Matematicas" class="tabcontent">
-                <h2>Matemáticas</h2>
-                <div id="MatematicasQuestions"></div>
-                <button type="button" onclick="calculateScore('Matematicas')">Enviar</button>
-                <div id="resultMatematicas" style="display:none;">
-                    <h2>Tu puntaje es: <span id="scoreMatematicas"></span>/3</h2>
-                </div>
-            </div>
+            <h2>1. Vocales</h2>
+                <p>Las vocales son las letras que forman el sonido básico de las sílabas en el idioma español. Existen cinco vocales en el alfabeto español: <strong>A, E, I, O, U</strong>. Estas vocales son fundamentales en la formación de palabras y en la pronunciación, ya que son los sonidos centrales de cada sílaba y permiten que se estructuren las palabras de manera adecuada.</p>
 
-            <div id="Ciencias" class="tabcontent">
-                <h2>Ciencias</h2>
-                <div id="CienciasQuestions"></div>
-                <button type="button" onclick="calculateScore('Ciencias')">Enviar</button>
-                <div id="resultCiencias" style="display:none;">
-                    <h2>Tu puntaje es: <span id="scoreCiencias"></span>/3</h2>
-                </div>
+            <h3>Lección:</h3>
+                <p><strong>¿Cuántas vocales hay en el alfabeto español?</strong> El alfabeto español tiene cinco vocales: <strong>A, E, I, O, U</strong>. Estas letras tienen un sonido propio y son esenciales para formar sílabas y palabras. Sin ellas, no podríamos construir muchas de las palabras que usamos en el día a día.</p>
+                <p><strong>¿Cuál de las siguientes es una vocal?</strong> La letra <strong>A</strong> es una vocal. Las otras opciones, como <strong>B</strong> y <strong>C</strong>, son consonantes. Las consonantes y las vocales se combinan para formar sílabas, pero tienen roles diferentes en la estructura de las palabras.</p>
+                <p><strong>¿Cuál es la vocal que falta en la oración "L_ c_s_ es muy gr_nde"?</strong> En esta oración, la letra <strong>"a"</strong> completa las palabras "La casa es muy grande". Esto muestra cómo las vocales son fundamentales para completar el significado de las palabras. Sin las vocales correctas, las palabras no tendrían sentido.</p>
+                <p><strong>¿Cuál es la vocal que falta en la oración "El p_rro _s muy jugu_tón"?</strong> La letra <strong>"a"</strong> completa las palabras "perro" y "es" en esta oración. Las vocales también son esenciales para formar palabras que den sentido a las oraciones y que puedan ser entendidas correctamente.</p>
+
+            <h2>2. Sustantivos Comunes y Propios</h2>
+                <p>Los sustantivos son palabras que nombran a personas, animales, cosas, lugares o ideas. Se dividen en <strong>comunes</strong> y <strong>propios</strong>. Los sustantivos comunes se refieren a objetos, personas o lugares en general, como "perro" o "ciudad". Por otro lado, los sustantivos propios son los nombres específicos de personas, lugares o cosas, como "María" o "México".</p>
+
+            <h3>Lección:</h3>
+                <p><strong>¿Cuál de las siguientes palabras es un sustantivo propio?</strong> Un sustantivo propio es <strong>"María"</strong>, ya que es el nombre específico de una persona. Los sustantivos propios siempre se escriben con inicial mayúscula. Mientras tanto, palabras como <strong>"mesa"</strong> o <strong>"ciudad"</strong> son sustantivos comunes porque se usan de manera general para referirse a objetos o lugares.</p>
+                <p><strong>¿Cuál de las siguientes palabras es un sustantivo común?</strong> <strong>"Perro"</strong> es un sustantivo común, porque se refiere a un tipo de animal en general, sin especificar a uno en particular. En cambio, palabras como <strong>"España"</strong> o <strong>"Madrid"</strong> son sustantivos propios, ya que nombran lugares específicos.</p>
+
+            <h2>3. Sinónimos y Antónimos</h2>
+                <p>Los <strong>sinónimos</strong> son palabras que tienen el mismo o un significado similar, mientras que los <strong>antónimos</strong> son palabras que tienen significados opuestos. Estos conceptos son muy importantes para enriquecer el vocabulario y comprender mejor las ideas al comunicarte.</p>
+
+            <h3>Lección:</h3>
+                <p><strong>¿Cuál es un sinónimo de "feliz"?</strong> Un sinónimo de <strong>"feliz"</strong> es <strong>"contento"</strong>, ya que ambas palabras expresan la misma idea de alegría y bienestar. Los sinónimos pueden usarse para evitar repeticiones y darle variedad a nuestro lenguaje.</p>
+                <p><strong>¿Cuál es un antónimo de "grande"?</strong> El antónimo de <strong>"grande"</strong> es <strong>"pequeño"</strong>, porque estas dos palabras expresan ideas opuestas sobre el tamaño. Conocer antónimos es esencial para entender las diferencias entre conceptos y utilizarlos correctamente en el contexto adecuado.</p>
+
+            <h2>4. Signos de Puntuación</h2>
+                <p>Los <strong>signos de puntuación</strong> son símbolos utilizados para estructurar y organizar las oraciones, ayudando a que el mensaje sea claro y fácil de comprender. El uso adecuado de los signos de puntuación es clave para una buena comunicación escrita.</p>
+
+            <h3>Lección:</h3>
+                <p><strong>¿Qué signo de puntuación se usa al final de una pregunta?</strong> El signo que se usa al final de una pregunta es el signo de interrogación ("<strong>?</strong>"). Este signo es crucial para indicar que una oración es una pregunta y para que el lector o interlocutor entienda que se espera una respuesta.</p>
+                <p><strong>¿Qué signo de puntuación se usa para separar elementos en una lista?</strong> El signo que se usa para separar los elementos de una lista es la coma ("<strong>,</strong>"). Las comas se utilizan para separar palabras o frases dentro de una misma oración, haciendo que el mensaje sea más organizado y fácil de seguir.</p>
+
+
+
             </div>
-        </form>
+            <div id="LenguasFormulario" class="content-section" style="display:none;">
+                <form id="quizFormLenguas">
+                    <div id="LenguasQuestions"></div>
+                    <button type="button" onclick="calculateScore('Lenguas')">Enviar</button>
+                    <div id="resultLenguas" style="display:none;">
+                        <h2>Tu puntaje es: <span id="scoreLenguas"></span>/3</h2>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div id="Matematicas" class="tabcontent">
+            <h2>Matemáticas</h2>
+            <button onclick="showContent('Matematicas', 'lecciones')">Ver Lecciones</button>
+            <button onclick="showContent('Matematicas', 'formulario')">Ir al Formulario</button>
+            <div id="MatematicasLecciones" class="content-section" style="display:none;">
+    <h1>Lecciones de Matemáticas</h1>
+
+    <h2>1. Sumas y Restas</h2>
+        <p>Las sumas son operaciones matemáticas que consisten en añadir dos o más números para obtener un total. Las restas son operaciones matemáticas que implican quitar una cantidad de otra para encontrar la diferencia.</p>
+
+    <h3>Lección:</h3>
+        <p><strong>¿Cuánto es 23 + 17?</strong> Para sumar 23 y 17, se suman las unidades (3 + 7 = 10) y las decenas (2 + 1 = 3), lo que da un total de 40.</p>
+        <p><strong>¿Cuánto es 58 - 24?</strong> Para restar 24 de 58, restamos las unidades (8 - 4 = 4) y las decenas (5 - 2 = 3), resultando 34.</p>
+
+    <h2>2. Multiplicaciones</h2>
+        <p>La multiplicación es una operación que nos permite sumar varias veces un mismo número. Se puede ver como una adición repetida.</p>
+
+    <h3>Lección:</h3>
+        <p><strong>¿Cuánto es 9 * 7?</strong> La multiplicación de 9 por 7 es 63, porque 9 sumado siete veces es igual a 63.</p>
+        <p><strong>¿Cuánto es 8 * 5?</strong> Al multiplicar 8 por 5, obtenemos 40.</p>
+
+    <h2>3. Divisiones</h2>
+        <p>La división es la operación matemática que se utiliza para repartir un número en partes iguales.</p>
+
+    <h3>Lección:</h3>
+        <p><strong>¿Cuánto es 120 / 10?</strong> La división de 120 entre 10 es igual a 12.</p>
+        <p><strong>¿Cuánto es 72 / 8?</strong> Dividir 72 entre 8 nos da como resultado 9.</p>
+
+    <h2>4. Fracciones</h2>
+        <p>Una fracción representa una parte de un todo y se escribe como dos números separados por una línea, donde el número superior (numerador) indica cuántas partes tomamos, y el número inferior (denominador) muestra en cuántas partes se divide el todo.</p>
+
+    <h3>Lección:</h3>
+        <p><strong>¿Cuál es la fracción equivalente a 4/8?</strong> La fracción 4/8 es equivalente a 1/2, ya que ambos números pueden simplificarse.</p>
+        <p><strong>¿Cuál es la fracción equivalente a 15/5?</strong> La fracción 15/5 es equivalente a 3/1, que es igual a 3.</p>
+
+            </div>
+            <div id="MatematicasFormulario" class="content-section" style="display:none;">
+                <form id="quizFormMatematicas">
+                    <div id="MatematicasQuestions"></div>
+                    <button type="button" onclick="calculateScore('Matematicas')">Enviar</button>
+                    <div id="resultMatematicas" style="display:none;">
+                        <h2>Tu puntaje es: <span id="scoreMatematicas"></span>/3</h2>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div id="Ciencias" class="tabcontent">
+            <h2>Ciencias</h2>
+            <button onclick="showContent('Ciencias', 'lecciones')">Ver Lecciones</button>
+            <button onclick="showContent('Ciencias', 'formulario')">Ir al Formulario</button>
+            <div id="CienciasLecciones" class="content-section" style="display:none;">
+                <h3>Lecciones de Ciencias</h3>
+
+            <h2>1. Sistema Solar</h2>
+                <p>El sistema solar está formado por el Sol, los planetas y otros cuerpos celestes como asteroides y cometas que giran alrededor del Sol. Los planetas en nuestro sistema solar son muy diferentes entre sí y tienen características únicas. Los planetas están divididos en dos grupos: los planetas rocosos (como la Tierra) y los planetas gaseosos (como Júpiter). El estudio de estos cuerpos celestes nos ayuda a entender mejor nuestro lugar en el universo.</p>
+
+            <h3>Lección:</h3>
+                <p><strong>¿Por qué Mercurio, el planeta más cercano al Sol, no es el más caliente?</strong> Aunque Mercurio está cerca del Sol, no tiene una atmósfera significativa para retener el calor. Esto significa que durante el día se calienta mucho, pero por la noche su temperatura baja drásticamente. En cambio, Venus, que está más lejos del Sol, tiene una atmósfera espesa que atrapa el calor, convirtiéndolo en el planeta más caliente del sistema solar.</p>
+                <p><strong>Si Júpiter es el planeta más grande, ¿qué lo hace diferente a la Tierra?</strong> Júpiter es un gigante gaseoso, lo que significa que está compuesto principalmente por gases como hidrógeno y helio. A diferencia de la Tierra, que tiene una superficie sólida y una atmósfera más equilibrada, Júpiter no tiene una superficie sólida sobre la que podamos caminar. Su atmósfera está llena de tormentas, como la famosa Gran Mancha Roja, que es una tormenta gigante que ha durado siglos.</p>
+
+            <h2>2. El Cuerpo Humano</h2>
+                <p>El cuerpo humano es un sistema increíblemente complejo que consta de diferentes órganos y sistemas que trabajan juntos para mantener la vida. Estos sistemas incluyen el sistema circulatorio, respiratorio, nervioso, digestivo, entre otros. Cada órgano tiene una función específica, y todos dependen de los demás para funcionar correctamente.</p>
+
+            <h3>Lección:</h3>
+                <p><strong>Si una persona deja de beber agua, ¿qué le pasaría primero?</strong> El cuerpo humano necesita agua para mantener muchas funciones vitales. El agua ayuda a regular la temperatura corporal, transportar nutrientes y eliminar desechos. Si una persona deja de beber agua, su cuerpo comenzará a deshidratarse, lo que puede afectar gravemente al sistema circulatorio y a la capacidad de los órganos para funcionar correctamente. Los primeros síntomas de deshidratación incluyen sequedad en la piel, cansancio y mareos.</p>
+                <p><strong>Si el cerebro controla el cuerpo, ¿qué función principal tiene el corazón?</strong> El cerebro es el centro de control del cuerpo, pero el corazón tiene una función crucial: bombear sangre a todo el cuerpo. La sangre transporta oxígeno y nutrientes a los órganos y elimina los desechos. El corazón asegura que la sangre fluya continuamente a través del sistema circulatorio, permitiendo que todos los órganos reciban lo que necesitan para funcionar correctamente.</p>
+
+            <h2>3. Los Animales</h2>
+                <p>Los animales tienen diversas adaptaciones que les permiten sobrevivir en sus respectivos ambientes. Estas adaptaciones pueden ser físicas, como el color o la forma de su cuerpo, o comportamentales, como sus hábitos alimenticios o de reproducción. Cada especie está diseñada para vivir en el entorno que la rodea.</p>
+
+            <h3>Lección:</h3>
+                <p><strong>¿Por qué los pingüinos no pueden volar aunque tengan alas?</strong> Los pingüinos tienen alas, pero están adaptadas para nadar, no para volar. Sus alas actúan como aletas que les permiten moverse rápidamente bajo el agua, lo cual es crucial para su supervivencia, ya que dependen del agua para alimentarse. Aunque sus alas no les permiten volar por el aire, están perfectamente adaptadas para su estilo de vida acuático.</p>
+                <p><strong>¿Qué animal puede dormir con un ojo abierto para vigilar a los depredadores?</strong> Los delfines tienen la capacidad de dormir con un ojo abierto gracias a un mecanismo en su cerebro que les permite desconectar una mitad del cerebro mientras la otra sigue activa. Esto les permite mantenerse alerta ante posibles depredadores o amenazas en su entorno, lo cual es una ventaja en su vida acuática.</p>
+
+            <h2>4. El Medio Ambiente</h2>
+                <p>El medio ambiente incluye todos los elementos naturales que nos rodean: el aire, el agua, las plantas, los animales y los ecosistemas. Es fundamental cuidar el medio ambiente para asegurar que las generaciones futuras puedan disfrutar de estos recursos y vivir en un planeta saludable. La contaminación y la deforestación son algunos de los principales problemas que afectan al medio ambiente.</p>
+
+            <h3>Lección:</h3>
+                <p><strong>Si cortamos demasiados árboles, ¿qué pasará con el aire?</strong> Los árboles son esenciales para el equilibrio del aire que respiramos. Absorben dióxido de carbono y liberan oxígeno. Si cortamos demasiados árboles, disminuye la cantidad de oxígeno en la atmósfera y aumenta el dióxido de carbono, lo que contribuye al cambio climático y al calentamiento global. Además, la deforestación afecta negativamente a los ecosistemas que dependen de los árboles para sobrevivir.</p>
+                <p><strong>¿Por qué los océanos son importantes para la vida en la Tierra?</strong> Los océanos son fundamentales para la vida en la Tierra por varias razones. En primer lugar, los océanos producen la mayor parte del oxígeno que respiramos, gracias a las algas y plantas marinas. Además, los océanos regulan la temperatura del planeta, absorbiendo y liberando calor. Sin los océanos, el clima de la Tierra sería mucho más extremo y difícil para la vida.</p>
+
+
+            </div>
+            <div id="CienciasFormulario" class="content-section" style="display:none;">
+                <form id="quizFormCiencias">
+                    <div id="CienciasQuestions"></div>
+                    <button type="button" onclick="calculateScore('Ciencias')">Enviar</button>
+                    <div id="resultCiencias" style="display:none;">
+                        <h2>Tu puntaje es: <span id="scoreCiencias"></span>/3</h2>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -102,46 +224,82 @@
 // Preguntas para cada materia
 const questions = {
     Lenguas: [
-        { q: '¿Cuál es el plural de "casa"?', a: 'b', options: ['Casos', 'Casas', 'Casitas'] },
-        { q: '¿Cuál es el antónimo de "feliz"?', a: 'a', options: ['Triste', 'Alegre', 'Contento'] },
-        { q: '¿Cuál es el sinónimo de "rápido"?', a: 'b', options: ['Lento', 'Veloz', 'Despacio'] },
-        { q: '¿Cuál es el plural de "luz"?', a: 'a', options: ['Luces', 'Luzes', 'Luz'] },
-        { q: '¿Cuál es el antónimo de "grande"?', a: 'a', options: ['Pequeño', 'Gigante', 'Enorme'] },
-        { q: '¿Cuál es el sinónimo de "feliz"?', a: 'b', options: ['Triste', 'Contento', 'Enojado'] },
-        { q: '¿Cuál es el plural de "ratón"?', a: 'a', options: ['Ratones', 'Ratóns', 'Ratón'] },
-        { q: '¿Cuál es el antónimo de "alto"?', a: 'a', options: ['Bajo', 'Grande', 'Pequeño'] },
-        { q: '¿Cuál es el sinónimo de "inteligente"?', a: 'b', options: ['Tonto', 'Listo', 'Ignorante'] },
-        { q: '¿Cuál es el plural de "flor"?', a: 'a', options: ['Flores', 'Flors', 'Flor'] },
-        { q: '¿Cuál es el antónimo de "rápido"?', a: 'b', options: ['Lento', 'Veloz', 'Despacio'] },
-        { q: '¿Cuál es el sinónimo de "hermoso"?', a: 'b', options: ['Feo', 'Bello', 'Horrible'] }
+        // Preguntas sobre vocales
+        { q: '¿Cuántas vocales hay en el alfabeto español?', a: 'b', options: ['4', '5', '6'] },
+        { q: '¿Cuál de las siguientes es una vocal?', a: 'a', options: ['A', 'B', 'C'] },
+        { q: '¿Cuál es la vocal que falta en la oración "L_ c_s_ es muy gr_nde"?', a: 'a', options: ['a', 'e', 'o'] },
+        { q: '¿Cuál es la vocal que falta en la oración "El p_rro _s muy jugu_tón"?', a: 'b', options: ['a', 'e', 'o'] },
+        
+        // Preguntas sobre sustantivos comunes y propios
+        { q: '¿Cuál de las siguientes palabras es un sustantivo propio?', a: 'a', options: ['María', 'mesa', 'ciudad'] },
+        { q: '¿Cuál de las siguientes palabras es un sustantivo común?', a: 'b', options: ['España', 'perro', 'Madrid'] },
+        { q: '¿Cuál de las siguientes palabras es un sustantivo propio?', a: 'c', options: ['gato', 'árbol', 'Juan'] },
+        { q: '¿Cuál de las siguientes palabras es un sustantivo común?', a: 'a', options: ['libro', 'Carlos', 'México'] },
+        
+        // Preguntas sobre sinónimos y antónimos
+        { q: '¿Cuál es un sinónimo de "feliz"?', a: 'b', options: ['triste', 'contento', 'enojado'] },
+        { q: '¿Cuál es un antónimo de "grande"?', a: 'a', options: ['pequeño', 'alto', 'ancho'] },
+        { q: '¿Cuál es un sinónimo de "rápido"?', a: 'c', options: ['lento', 'pausado', 'veloz'] },
+        { q: '¿Cuál es un antónimo de "fuerte"?', a: 'a', options: ['débil', 'fuerte', 'robusto'] },
+        
+        // Preguntas sobre signos de puntuación
+        { q: '¿Qué signo de puntuación se usa al final de una pregunta?', a: 'a', options: ['?', '!', '.'] },
+        { q: '¿Qué signo de puntuación se usa para separar elementos en una lista?', a: 'b', options: ['.', ',', ';'] },
+        { q: '¿Qué signo de puntuación se usa al final de una oración?', a: 'c', options: ['¿', '!', '.'] },
+        { q: '¿Qué signo de puntuación se usa para indicar una pausa breve en una oración?', a: 'b', options: [',', ';', ':'] }
+        
     ],
+    
     Matematicas: [
-        { q: '¿Cuánto es 2 + 2?', a: 'b', options: ['3', '4', '5'] },
-        { q: '¿Cuánto es 5 * 3?', a: 'a', options: ['15', '10', '20'] },
-        { q: '¿Cuánto es 10 / 2?', a: 'b', options: ['4', '5', '6'] },
-        { q: '¿Cuánto es 7 - 3?', a: 'b', options: ['5', '4', '3'] },
-        { q: '¿Cuánto es 6 + 4?', a: 'a', options: ['10', '11', '12'] },
-        { q: '¿Cuánto es 9 / 3?', a: 'b', options: ['2', '3', '4'] },
-        { q: '¿Cuánto es 8 * 2?', a: 'b', options: ['14', '16', '18'] },
-        { q: '¿Cuánto es 12 - 5?', a: 'a', options: ['7' , '8', '6'] },
-        { q: '¿Cuánto es 3 + 5?', a: 'b', options: ['7', '8', '9'] },
-        { q: '¿Cuánto es 15 / 5?', a: 'b', options: ['2', '3', '4'] },
-        { q: '¿Cuánto es 4 * 4?', a: 'a', options: ['16', '18', '20'] },
-        { q: '¿Cuánto es 10 - 7?', a: 'b', options: ['4', '3', '2'] }
+        // Preguntas sobre sumas y restas
+        { q: '¿Cuánto es 15 + 27?', a: 'c', options: ['32', '40', '42'] },
+        { q: '¿Cuánto es 45 - 19?', a: 'b', options: ['28', '26', '24'] },
+        { q: '¿Cuánto es 123 - 57?', a: 'a', options: ['66', '70', '64'] },
+        { q: '¿Cuánto es 89 + 34?', a: 'c', options: ['110', '120', '123'] },
+        
+        // Preguntas sobre multiplicaciones
+        { q: '¿Cuánto es 12 * 8?', a: 'b', options: ['80', '96', '104'] },
+        { q: '¿Cuánto es 7 * 6?', a: 'a', options: ['42', '48', '36'] },
+        { q: '¿Cuánto es 9 * 9?', a: 'b', options: ['72', '81', '90'] },
+        { q: '¿Cuánto es 15 * 4?', a: 'b', options: ['50', '60', '70'] },
+        
+        // Preguntas sobre divisiones
+        { q: '¿Cuánto es 144 / 12?', a: 'a', options: ['12', '14', '16'] },
+        { q: '¿Cuánto es 81 / 9?', a: 'c', options: ['7', '8', '9'] },
+        { q: '¿Cuánto es 56 / 7?', a: 'b', options: ['6', '8', '10'] },
+        { q: '¿Cuánto es 100 / 25?', a: 'a', options: ['4', '5', '6'] },
+        
+        // Preguntas sobre fracciones
+        { q: '¿Cuál es la fracción equivalente a 3/9?', a: 'b', options: ['1/4', '1/3', '1/2'] },
+        { q: '¿Cuál es la fracción equivalente a 32/8?', a: 'c', options: ['6', '2/3', '4/1'] },
+        { q: '¿Cuál es la fracción equivalente a 6/24?', a: 'a', options: ['1/4', '1/3', '1/2'] },
+        { q: '¿Cuál es la fracción equivalente a 9/18?', a: 'b', options: ['1/4', '1/2', '3/4'] }
     ],
+
     Ciencias: [
-        { q: '¿Cuál es el planeta más cercano al sol?', a: 'c', options: ['Venus', 'Marte', 'Mercurio'] },
-        { q: '¿Qué gas respiramos los humanos?', a: 'a', options: ['Oxígeno', 'Hidrógeno', 'Nitrógeno'] },
-        { q: '¿Cuál es el estado líquido del agua?', a: 'c', options: ['Hielo', 'Vapor', 'Agua'] },
-        { q: '¿Cuál es el planeta más grande del sistema solar?', a: 'b', options: ['Tierra', 'Júpiter', 'Saturno'] },
-        { q: '¿Qué órgano bombea la sangre en el cuerpo humano?', a: 'a', options: ['Corazón', 'Pulmón', 'Hígado'] },
-        { q: '¿Cuál es el metal más abundante en la corteza terrestre?', a: 'b', options: ['Hierro', 'Aluminio', 'Cobre'] },
-        { q: '¿Qué tipo de animal es una ballena?', a: 'b', options: ['Pez', 'Mamífero', 'Reptil'] },
-        { q: '¿Cuál es el proceso por el cual las plantas producen su alimento?', a: 'a', options: ['Fotosíntesis', 'Respiración', 'Digestión'] },
-        { q: '¿Qué planeta es conocido como el planeta rojo?', a: 'b', options: ['Venus', 'Marte', 'Júpiter'] },
-        { q: '¿Cuál es el órgano más grande del cuerpo humano?', a: 'b', options: ['Cerebro', 'Piel', 'Hígado'] },
-        { q: '¿Qué gas es necesario para la fotosíntesis?', a: 'a', options: ['Dióxido de carbono', 'Oxígeno', 'Nitrógeno'] },
-        { q: '¿Cuál es el componente principal del sol?', a: 'b', options: ['Oxígeno', 'Hidrógeno', 'Helio'] }
+         // Preguntas sobre el sistema solar
+    { q: '¿Por qué Mercurio, el planeta más cercano al Sol, no es el más caliente?', a: 'b', options: ['Porque está hecho de metal', 'Porque no tiene atmósfera para retener el calor', 'Porque gira demasiado rápido'] },
+    { q: 'Si Júpiter es el planeta más grande, ¿qué lo hace diferente a la Tierra?', a: 'c', options: ['Tiene volcanes gigantes', 'Es el único con agua líquida', 'Está hecho de gases y no tiene superficie sólida'] },
+    { q: 'Si viajaras a Marte, ¿qué problema enfrentarías al respirar?', a: 'a', options: ['No hay suficiente oxígeno', 'El aire es muy frío', 'Los volcanes expulsan gases venenosos'] },
+    { q: '¿Qué planeta tiene tormentas gigantes como la Gran Mancha Roja?', a: 'c', options: ['Neptuno', 'Urano', 'Júpiter'] },
+
+    // Preguntas sobre el cuerpo humano
+    { q: 'Si una persona deja de beber agua, ¿qué le pasaría primero?', a: 'b', options: ['Se quedaría sin energía', 'Su cuerpo no podría regular la temperatura', 'Su corazón dejaría de latir'] },
+    { q: 'Si el cerebro controla el cuerpo, ¿qué función principal tiene el corazón?', a: 'c', options: ['Envía oxígeno al cerebro', 'Controla los nervios', 'Bombea sangre con oxígeno a todo el cuerpo'] },
+    { q: 'Cuando respiramos, ¿qué gas tomamos del aire y cuál expulsamos?', a: 'a', options: ['Tomamos oxígeno y expulsamos dióxido de carbono', 'Tomamos nitrógeno y expulsamos oxígeno', 'Tomamos hidrógeno y expulsamos nitrógeno'] },
+    { q: '¿Cuál es el hueso más largo del cuerpo humano?', a: 'c', options: ['Húmero', 'Cráneo', 'Fémur'] },
+
+    // Preguntas sobre los animales
+    { q: '¿Por qué los pingüinos no pueden volar aunque tengan alas?', a: 'a', options: ['Sus alas son cortas y están adaptadas para nadar', 'Su cuerpo es demasiado pesado', 'No tienen plumas suficientes'] },
+    { q: 'Si un camaleón cambia de color, ¿qué está tratando de hacer?', a: 'c', options: ['Atraer a otros camaleones', 'Defenderse de los depredadores', 'Regular su temperatura y camuflarse'] },
+    { q: '¿Qué animal puede dormir con un ojo abierto para vigilar a los depredadores?', a: 'b', options: ['León', 'Delfín', 'Águila'] },
+    { q: 'Si un oso entra en hibernación, ¿qué significa eso?', a: 'c', options: ['Se esconde en la nieve', 'Come más para protegerse del frío', 'Duerme durante meses para conservar energía'] },
+
+    // Preguntas sobre el medio ambiente
+    { q: 'Si cortamos demasiados árboles, ¿qué pasará con el aire?', a: 'b', options: ['Habrá más oxígeno', 'Habrá menos oxígeno y más dióxido de carbono', 'Nada cambiará porque el aire se repone solo'] },
+    { q: '¿Por qué los océanos son importantes para la vida en la Tierra?', a: 'c', options: ['Son la mayor fuente de alimentos', 'Nos protegen del calor del Sol', 'Producen la mayor parte del oxígeno del planeta'] },
+    { q: 'Si dejas una botella de plástico en la naturaleza, ¿qué problema causa?', a: 'a', options: ['Tarda cientos de años en descomponerse', 'Se convierte en agua con el tiempo', 'Los árboles pueden absorberla sin problema'] },
+    { q: '¿Por qué el calentamiento global es un problema?', a: 'c', options: ['Hace que llueva menos', 'Provoca más tornados', 'Aumenta la temperatura y derrite los polos'] }
     ]
 };
 
@@ -181,7 +339,20 @@ function openTab(evt, tabName) {
     }
     document.getElementById(tabName).style.display = "block";
     evt.currentTarget.className += " active";
-    renderQuestions(tabName);
+}
+
+// Mostrar contenido de lecciones o formulario
+function showContent(subject, type) {
+    const lecciones = document.getElementById(`${subject}Lecciones`);
+    const formulario = document.getElementById(`${subject}Formulario`);
+    if (type === 'lecciones') {
+        lecciones.style.display = 'block';
+        formulario.style.display = 'none';
+    } else {
+        lecciones.style.display = 'none';
+        formulario.style.display = 'block';
+        renderQuestions(subject);
+    }
 }
 
 // Calcular el puntaje
