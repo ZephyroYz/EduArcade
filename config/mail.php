@@ -37,6 +37,13 @@ return [
 
     'mailers' => [
 
+        'mailgun' => [
+            'driver' => env('MAIL_MAILER'),
+            'domain' => env('MAILGUN_DOMAIN'),
+            'secret' => env('MAILGUN_SECRET'),
+        ],
+
+        
         'smtp' => [
             'transport' => 'smtp',
             'scheme' => env('MAIL_SCHEME'),
