@@ -1,20 +1,3 @@
-<style>
-        /* Fondo con la imagen Back2.img */
-        .fondo-inicio {
-            background-image: url('/img/Back2.jpeg'); /* Ruta de tu imagen */
-            background-size: cover;
-            background-position: center;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: black;
-        }
-    </style>
-
-
-
-
 @extends('layouts.app')
 
 @section('content')
@@ -38,6 +21,18 @@
                 <input type="text" id="clabe" name="clabe" class="form-control" maxlength="18" required>
             </div>
 
+            <!-- Fecha de Caducidad -->
+            <div class="mb-3">
+                <label for="fecha_caducidad" class="form-label">Fecha de Caducidad (MM/AAAA):</label>
+                <input type="text" id="fecha_caducidad" name="fecha_caducidad" class="form-control" placeholder="MM/AAAA" required>
+            </div>
+
+            <!-- CVV -->
+            <div class="mb-3">
+                <label for="cvv" class="form-label">CVV (3 dígitos):</label>
+                <input type="text" id="cvv" name="cvv" class="form-control" maxlength="3" required>
+            </div>
+
             <!-- Checkbox de términos y condiciones -->
             <div class="mb-3">
                 <input type="checkbox" id="terminos" required>
@@ -50,6 +45,18 @@
             <button type="submit" class="btn btn-primary" id="btn-comprar" disabled>Comprar</button>
         </form>
     </div>
+
+    <!-- Modal de Verificación de Edad -->
+    @if (!session('verificado_edad'))
+    <div id="modalEdad" class="modal">
+        <div class="modal-content">
+            <h2>Verificación de Edad</h2>
+            <p>¿Eres mayor de 18 años?</p>
+            <a href="{{ route('compra.procesarEdad', ['verificado' => true]) }}" class="btn btn-success">Sí</a>
+            <a href="{{ route('compra.procesarEdad', ['verificado' => false]) }}" class="btn btn-danger">No</a>
+        </div>
+    </div>
+    @endif
 
     <!-- Modal de Términos y Condiciones -->
     <div id="modalTerminos" class="modal">
@@ -106,16 +113,6 @@
         </div>
     </div>
 
-    <!-- Modal de Verificación de Edad -->
-    <div id="modalEdad" class="modal">
-        <div class="modal-content">
-            <h2>Verificación de Edad</h2>
-            <p>¿Eres mayor de 18 años?</p>
-            <button onclick="verificarEdad(true)" class="btn btn-success">Sí</button>
-            <button onclick="verificarEdad(false)" class="btn btn-danger">No</button>
-        </div>
-    </div>
-
     <!-- Estilos para el Modal con scroll -->
     <style>
         .modal {
@@ -167,18 +164,10 @@
             document.getElementById("modalTerminos").style.display = "none";
         }
 
-        function verificarEdad(esMayor) {
-            if (esMayor) {
-                document.getElementById("modalEdad").style.display = "none";
-            } else {
-                window.location.href = "{{ url('/') }}";
-            }
-        }
-
-        // Mostrar el modal de verificación de edad al cargar la página
-        window.onload = function() {
-            document.getElementById("modalEdad").style.display = "block";
-        }
+        // Verificar si el modal de edad debe mostrarse
+        @if (!session('verificado_edad'))
+        document.getElementById("modalEdad").style.display = "block";
+        @endif
     </script>
 </div>
 @endsection

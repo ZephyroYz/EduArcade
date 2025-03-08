@@ -92,7 +92,7 @@ return [
             'charset' => 'utf8',
             'prefix' => '',
             'schema' => 'public',
-            'sslmode' => 'require',  // Asegúrate de habilitar el uso de SSL si es necesario
+            'sslmode' => env('DB_SSLMODE', 'disable'), // Asegúrate de que está en "disable"
         ],
 
 

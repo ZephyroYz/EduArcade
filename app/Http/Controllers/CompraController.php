@@ -10,32 +10,20 @@ class CompraController extends Controller
 {
     public function index()
     {
+        // Verificar si ya ha pasado la verificación de edad
+        if (!session('verificado_edad')) {
+            session(['verificado_edad' => false]); // Si no se ha verificado, se marca como no verificado
+        }
+    
         return view('compras.index'); // Aquí puedes mostrar el formulario de compra
     }
-
-    public function procesarCompra(Request $request)
+    
+    public function procesarEdad(Request $request, $verificado)
     {
-        // Aquí puedes simular un proceso de compra sin preocuparte por la validación de datos bancarios
-        // Solo validamos el nombre y la CLABE, que son los datos que realmente nos interesan para la simulación
-        $request->validate([
-            'nombre' => 'required|string',
-            'clabe' => 'required|digits:18',
-            // No validamos los detalles de la tarjeta, ya que solo estamos simulando
-        ]);
-
-        // Verificar si el usuario ya compró el software
-        if (Compra::where('user_id', Auth::id())->exists()) {
-            return redirect()->route('descarga')->with('message', 'Ya has comprado el software.');
-        }
-
-        // Simular la compra, ya que en este caso no estamos conectándonos a un servicio de pago real
-        Compra::create([
-            'user_id' => Auth::id(),
-            'monto' => 99.99, // Ajusta el precio según corresponda
-            'estatus' => 'completado',  // Aquí simulas que la compra fue exitosa
-        ]);
-
-        // Redirigir al usuario a la página de descarga con un mensaje
-        return redirect()->route('descarga')->with('message', 'Compra realizada con éxito.');
+        // Almacenar en la sesión si el usuario es mayor de edad
+        session(['verificado_edad' => $verificado]);
+    
+        return redirect()->route('compra.index'); // Redirigir al formulario de compra
     }
+    
 }

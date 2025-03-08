@@ -49,12 +49,25 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
+            'name' => ['required', 'string', 'min:3', 'max:15'], // Ahora de 3 a 15 caracteres
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'password' => [
+                'required', 
+                'string', 
+                'min:8', 
+                'confirmed',
+                'regex:/[A-Z]/', // Al menos una mayúscula
+                'regex:/[!@#$%^&*(),.?":{}|<>]/' // Al menos un carácter especial
+            ],
+        ], [
+            'name.min' => 'El nombre de usuario debe tener al menos 3 caracteres.',
+            'name.max' => 'El nombre de usuario no puede tener más de 15 caracteres.',
+            'password.regex' => 'La contraseña debe contener al menos una letra mayúscula y un carácter especial (!@#$%^&*(),.?":{}|<>).',
         ]);
     }
-
+    
+    
+    
     /**
      * Create a new user instance after a valid registration.
      *

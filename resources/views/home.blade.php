@@ -34,10 +34,6 @@
                 ¡Únete a nosotros y empieza a disfrutar del aprendizaje de una manera completamente nueva!
             </p>
 
-            <div class="card mx-auto" style="width: 190px; height: 254px; background: rgb(236, 236, 236); box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;">
-                <img src="/img/Game1.png" alt="Matemáticas 2" class="card-img-top" style="width: 100%; height: auto;">
-            </div>
-
 
         </div>
         <img src="{{ asset('img/Castor.png') }}" alt="castor" class="ml-3 img-fluid" style="max-width: 300px; position: absolute; right: 120px;">
