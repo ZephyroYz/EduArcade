@@ -12,32 +12,43 @@
             <!-- Nombre del Propietario -->
             <div class="mb-3">
                 <label for="nombre" class="form-label">Nombre en la tarjeta:</label>
-                <input type="text" id="nombre" name="nombre" class="form-control" required>
+                <input type="text" id="nombre" name="nombre" class="form-control" value="{{ old('nombre') }}" required>
+                @error('nombre') <div class="text-danger">{{ $message }}</div> @enderror
             </div>
 
-            <!-- CLABE -->
+            <!-- Número de Tarjeta -->
             <div class="mb-3">
-                <label for="clabe" class="form-label">CLABE Interbancaria:</label>
-                <input type="text" id="clabe" name="clabe" class="form-control" maxlength="18" required>
+                <label for="numero_tarjeta" class="form-label">Número de Tarjeta:</label>
+                <input type="text" id="numero_tarjeta" name="numero_tarjeta" class="form-control" maxlength="16" value="{{ old('numero_tarjeta') }}" required>
+                @error('numero_tarjeta') <div class="text-danger">{{ $message }}</div> @enderror
             </div>
 
             <!-- Fecha de Caducidad -->
             <div class="mb-3">
-                <label for="fecha_caducidad" class="form-label">Fecha de Caducidad (MM/AAAA):</label>
-                <input type="text" id="fecha_caducidad" name="fecha_caducidad" class="form-control" placeholder="MM/AAAA" required>
+                <label for="fecha_caducidad" class="form-label">Fecha de Caducidad:</label>
+                <input type="month" id="fecha_caducidad" name="fecha_caducidad" class="form-control" value="{{ old('fecha_caducidad') }}" required>
+                @error('fecha_caducidad') <div class="text-danger">{{ $message }}</div> @enderror
             </div>
 
             <!-- CVV -->
             <div class="mb-3">
-                <label for="cvv" class="form-label">CVV (3 dígitos):</label>
-                <input type="text" id="cvv" name="cvv" class="form-control" maxlength="3" required>
+                <label for="cvv" class="form-label">CVV:</label>
+                <input type="text" id="cvv" name="cvv" class="form-control" maxlength="3" value="{{ old('cvv') }}" required>
+                @error('cvv') <div class="text-danger">{{ $message }}</div> @enderror
+            </div>
+
+            <!-- Fecha de Nacimiento -->
+            <div class="mb-3">
+                <label for="fecha_nacimiento" class="form-label">Fecha de Nacimiento:</label>
+                <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" class="form-control" value="{{ old('fecha_nacimiento') }}" required onchange="validarEdad()">
+                @error('fecha_nacimiento') <div class="text-danger">{{ $message }}</div> @enderror
             </div>
 
             <!-- Checkbox de términos y condiciones -->
             <div class="mb-3">
                 <input type="checkbox" id="terminos" required>
                 <label for="terminos">
-                    Acepto <a href="#" onclick="mostrarTerminos()">Acepto los Términos y condiciones.</a>
+                    Acepto <a href="#" onclick="mostrarTerminos()">los Términos y condiciones.</a>
                 </label>            
             </div>
 
@@ -45,18 +56,6 @@
             <button type="submit" class="btn btn-primary" id="btn-comprar" disabled>Comprar</button>
         </form>
     </div>
-
-    <!-- Modal de Verificación de Edad -->
-    @if (!session('verificado_edad'))
-    <div id="modalEdad" class="modal">
-        <div class="modal-content">
-            <h2>Verificación de Edad</h2>
-            <p>¿Eres mayor de 18 años?</p>
-            <a href="{{ route('compra.procesarEdad', ['verificado' => true]) }}" class="btn btn-success">Sí</a>
-            <a href="{{ route('compra.procesarEdad', ['verificado' => false]) }}" class="btn btn-danger">No</a>
-        </div>
-    </div>
-    @endif
 
     <!-- Modal de Términos y Condiciones -->
     <div id="modalTerminos" class="modal">
@@ -112,62 +111,48 @@
             </div>
         </div>
     </div>
-
-    <!-- Estilos para el Modal con scroll -->
-    <style>
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.4);
-        }
-        .modal-content {
-            background-color: white;
-            margin: 10% auto;
-            padding: 20px;
-            border-radius: 8px;
-            width: 50%;
-            max-height: 80vh; /* Altura máxima del modal */
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        .modal-body {
-            flex-grow: 1;
-            overflow-y: auto; /* Permite desplazamiento vertical */
-            max-height: 300px; /* Altura máxima del contenido desplazable */
-            padding-right: 10px;
-        }
-        .close {
-            float: right;
-            font-size: 28px;
-            cursor: pointer;
-        }
-    </style>
-
-    <!-- Scripts -->
-    <script>
-        document.getElementById('terminos').addEventListener('change', function() {
-            document.getElementById('btn-comprar').disabled = !this.checked;
-        });
-
-        function mostrarTerminos() {
-            document.getElementById("modalTerminos").style.display = "block";
-        }
-
-        function cerrarTerminos() {
-            document.getElementById("modalTerminos").style.display = "none";
-        }
-
-        // Verificar si el modal de edad debe mostrarse
-        @if (!session('verificado_edad'))
-        document.getElementById("modalEdad").style.display = "block";
-        @endif
-    </script>
 </div>
+
+<script>
+    // Validación del checkbox de términos y condiciones
+    document.getElementById('terminos').addEventListener('change', function() {
+        document.getElementById('btn-comprar').disabled = !this.checked;
+    });
+
+    // Mostrar el modal de Términos y Condiciones
+    function mostrarTerminos() {
+        document.getElementById("modalTerminos").style.display = "block";
+    }
+
+    // Cerrar el modal de Términos y Condiciones
+    function cerrarTerminos() {
+        document.getElementById("modalTerminos").style.display = "none";
+    }
+
+    // Validación de Edad basada en la fecha de nacimiento
+    function validarEdad() {
+        const fechaNacimiento = document.getElementById('fecha_nacimiento').value;
+        const edad = calcularEdad(fechaNacimiento);
+
+        if (edad < 18) {
+            alert('Debes ser mayor de 18 años para realizar la compra. Voluntarios de la Cruz Roja estarán en la puerta de tu casa para verificar tu edad.');
+            window.location.href = "{{ url('/') }}"; // Redirigir a la página de inicio
+        }
+    }
+
+    // Función para calcular la edad a partir de la fecha de nacimiento
+    function calcularEdad(fechaNacimiento) {
+        const hoy = new Date();
+        const fecha = new Date(fechaNacimiento);
+        let edad = hoy.getFullYear() - fecha.getFullYear();
+        const m = hoy.getMonth() - fecha.getMonth();
+
+        if (m < 0 || (m === 0 && hoy.getDate() < fecha.getDate())) {
+            edad--;
+        }
+
+        return edad;
+    }
+</script>
+
 @endsection

@@ -38,20 +38,20 @@ Route::middleware(['auth'])->group(function () {
 
 
 
-    // Rutas para editar y actualizar el perfil del usuario
-    Route::middleware(['auth'])->group(function () {
-        Route::get('/perfil', [PerfilController::class, 'edit'])->name('perfil.edit');
-        Route::post('/perfil', [PerfilController::class, 'update'])->name('perfil.update');
-        });
-
     
     // Rutas para Soporte
     Route::middleware('auth')->get('/soporte', [SupportController::class, 'show'])->name('soporte');
 
-    
+    Route::get('/soporte', [SupportController::class, 'show'])->name('soporte');
 
 
     Route::get('/contacto', [ContactController::class, 'show'])->name('contacto');
 
 
+
+    // Rutas para perfil o foto eso
+    route::middleware(['auth'])->group(function () {
+        Route::get('/perfil', [PerfilController::class, 'edit'])->name('perfil.edit');
+        Route::post('/perfil', [PerfilController::class, 'update'])->name('perfil.update');
+    });
 });

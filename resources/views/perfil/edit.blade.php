@@ -19,31 +19,45 @@
 
 @section('content')
 <div class="fondo-inicio">
-            <!-- Cuadro blanco con fondo color -->
-            <div class="container bg-white p-4 rounded shadow">
-    <h2>Editar Perfil</h2>
+    <!-- Cuadro blanco con fondo color -->
+    <div class="container bg-white p-4 rounded shadow">
+        <h2>Editar Perfil</h2>
 
-    @if(session('success'))
-        <div class="alert alert-success">
-            {{ session('success') }}
-        </div>
-    @endif
+        @if(session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
 
-    <form method="POST" action="{{ route('perfil.update') }}">
-        @csrf
+        <form method="POST" action="{{ route('perfil.update') }}" enctype="multipart/form-data">
+            @csrf
 
-        <div class="mb-3">
-            <label for="name" class="form-label">Nombre</label>
-            <input type="text" class="form-control" id="name" name="name" value="{{ old('name', $user->name) }}" required>
-        </div>
+            <div class="mb-3">
+                <label for="name" class="form-label">Nombre</label>
+                <input type="text" class="form-control" id="name" name="name" value="{{ old('name', $user->name) }}" required>
+            </div>
 
-        <div class="mb-3">
-            <label for="email" class="form-label">Correo Electrónico</label>
-            <input type="email" class="form-control" id="email" name="email" value="{{ old('email', $user->email) }}" required>
-        </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Correo Electrónico</label>
+                <input type="email" class="form-control" id="email" name="email" value="{{ old('email', $user->email) }}" required>
+            </div>
 
-        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
-    </form>
+            <div class="mb-3">
+                <label for= "profile_photo" class="form-label">Foto de Perfil</label>
+                <input type="file" class="form-control" id="profile_photo" name="profile_photo">
+                @if($user->profile_photo)
+                    <div class="mt-3">
+                    <img src="{{ url('storage/profile-photos/' . $user->profile_photo) }}" alt="Foto de Perfil"style="max-width: 150px;">
+
+
+                    </div>
+                @endif
+            </div>
+
+            <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+        </form>
+    </div>
 </div>
-</div>
+
+
 @endsection

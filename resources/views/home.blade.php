@@ -35,6 +35,8 @@
             </p>
 
 
+            
+
         </div>
         <img src="{{ asset('img/Castor.png') }}" alt="castor" class="ml-3 img-fluid" style="max-width: 300px; position: absolute; right: 120px;">
     </div>

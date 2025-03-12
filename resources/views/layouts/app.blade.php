@@ -78,13 +78,18 @@
                         @auth
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                @if(Auth::user()->profile_photo)
+                                    <img src="{{ asset('storage/profile-photos/' . Auth::user()->profile_photo) }}" alt="Perfil" class="rounded-circle" width="30" height="30" style="margin-right: 8px;">
+                                @else
+                                    <img src="{{ asset('img/default_profile.png') }}" alt="Perfil" class="rounded-circle" width="30" height="30" style="margin-right: 8px;">
+                                @endif
                                     {{ Auth::user()->name }}
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('perfil.edit') }}">
-                                    Perfil
-                                </a>
+                                    <a class="dropdown-item" href="{{ route('perfil.edit') }}">
+                                        Perfil
+                                    </a>
 
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
