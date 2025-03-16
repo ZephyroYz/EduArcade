@@ -7,6 +7,7 @@ use App\Http\Controllers\DescargaController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SupportController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\TicketController;
 
 // Ruta principal
 Route::get('/', function () {
@@ -54,4 +55,16 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/perfil', [PerfilController::class, 'edit'])->name('perfil.edit');
         Route::post('/perfil', [PerfilController::class, 'update'])->name('perfil.update');
     });
+
+
+
+    // Rutas para el chat de soporte (tickets)
+    Route::middleware('auth')->group(function () {
+        Route::get('/chatsoporte', [TicketController::class, 'index'])->name('chatsoporte');
+        Route::post('/chatsoporte', [TicketController::class, 'store']);
+        Route::post('/chatsoporte/{ticket}/responder', [TicketController::class, 'responder']);
+        Route::post('/chatsoporte/{ticket}/cerrar', [TicketController::class, 'cerrar']);
+    });
+    
+
 });

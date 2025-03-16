@@ -45,4 +45,11 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+
+    public function getEsAdminAttribute()
+{
+    return in_array($this->email, ['admin1@example.com', 'admin2@example.com']);
+}
+
 }
