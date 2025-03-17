@@ -82,18 +82,20 @@ return [
             ]) : [],
         ],
 
-            'pgsql' => [
-            'driver' => 'pgsql',
-            'host' => env('DB_HOST', 'localhost'),
-            'port' => env('DB_PORT', '5432'),
-            'database' => env('DB_DATABASE', 'forge'),
-            'username' => env('DB_USERNAME', 'forge'),
-            'password' => env('DB_PASSWORD', ''),
-            'charset' => 'utf8',
-            'prefix' => '',
-            'schema' => 'public',
-            'sslmode' => env('DB_SSLMODE', 'disable'), // Asegúrate de que está en "disable"
-        ],
+'pgsql' => [
+    'driver'   => 'pgsql',
+    'url'      => env('DATABASE_URL'),  // Mantén esta línea
+    'host'     => parse_url(env('DATABASE_URL'))['host'],  // Obtiene el host de la URL
+    'port'     => parse_url(env('DATABASE_URL'))['port'],  // Obtiene el puerto de la URL
+    'database' => ltrim(parse_url(env('DATABASE_URL'))['path'], '/'),  // Obtiene el nombre de la base de datos
+    'username' => parse_url(env('DATABASE_URL'))['user'],  // Obtiene el nombre de usuario de la URL
+    'password' => parse_url(env('DATABASE_URL'))['pass'],  // Obtiene la contraseña de la URL
+    'charset'  => 'utf8',
+    'prefix'   => '',
+    'schema'   => 'public',
+    'sslmode'  => env('DB_SSLMODE', 'disable'),  // Asegúrate de que esta variable esté configurada
+],
+
 
 
         'sqlsrv' => [
