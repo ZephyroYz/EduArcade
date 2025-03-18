@@ -21,7 +21,7 @@
             <div class="container bg-white p-4 rounded shadow">
         <h1>Descarga del Software</h1>
         <p>Gracias por tu compra. Descarga el software aquí:</p>
-        <a href="{{ asset('descargas/EduBeaver.exe') }}" class="btn btn-success" download>Descargar</a>
+        <a href="{{ asset('descargas/PruebaEduBeaver.zip') }}" class="btn btn-success" download>Descargar</a>
     </div>
 </div>
 @endsection

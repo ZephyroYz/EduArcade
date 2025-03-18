@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SupportController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\TicketController;
+use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\Storage;
 
 // Ruta principal
 Route::get('/', function () {
@@ -65,6 +67,22 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/chatsoporte/{ticket}/responder', [TicketController::class, 'responder']);
         Route::post('/chatsoporte/{ticket}/cerrar', [TicketController::class, 'cerrar']);
     });
+
+
+    // Ruta para descargar el software
+
+    Route::get('/descargar-software', function () {
+        $filePath = public_path('descargas/PruebaEduBeaver.zip');
+    
+        if (!file_exists($filePath)) {
+            abort(404, 'Archivo no encontrado.');
+        }
+    
+        return Response::download($filePath, 'PruebaEduBeaver.zip');
+    })->name('descargar.software');
+    
+
+    
     
 
 });
