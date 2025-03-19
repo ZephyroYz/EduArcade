@@ -1,3 +1,18 @@
+<style>
+        /* Fondo con la imagen Back2.img */
+        .fondo-inicio {
+            background-image: url('/img/Back2.jpeg'); /* Ruta de tu imagen 
+            /*background-color:rgb(247, 0, 0);*/
+            background-size: cover;
+            background-position: center; 
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: black;
+        }
+    </style>
+
 @extends('layouts.app')
 
 @section('content')
@@ -11,6 +26,7 @@
 
             <!-- Nombre del Propietario -->
             <div class="mb-3">
+                <p>  <strong>Nota: Esto solo es para entornos de prueba, por favor, no ingrese datos reales</strong></p>
                 <label for="nombre" class="form-label">Nombre en la tarjeta:</label>
                 <input type="text" id="nombre" name="nombre" class="form-control" value="{{ old('nombre') }}" required>
                 @error('nombre') <div class="text-danger">{{ $message }}</div> @enderror

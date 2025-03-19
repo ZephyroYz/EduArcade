@@ -34,7 +34,7 @@ class CompraController extends Controller
         // Simular la compra
         Compra::create([
             'user_id' => Auth::id(),
-            'monto' => 99.99, // Ajusta el precio según corresponda
+            'monto' => 25.00, // Ajusta el precio según corresponda
             'estatus' => 'completado',
         ]);
 
