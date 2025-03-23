@@ -19,10 +19,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        // Forzar el uso de HTTPS si estamos en producción
-        if (config('app.env') === 'production') {
-            URL::forceScheme('https');
-        }
+        //
     }
 }
-
