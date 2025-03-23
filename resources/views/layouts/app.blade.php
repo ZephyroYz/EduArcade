@@ -1,7 +1,6 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
-
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
 
@@ -21,7 +20,6 @@
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     
 </head>
-
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 
@@ -59,13 +57,21 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
-
                         @auth
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('soporte') }}">Soporte</a>
+                                <a class="nav-link" href="{{ route('perfil.edit') }}">Perfil</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();">
+                                    Cerrar sesión
+                                </a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
                             </li>
                         @endauth
-
 
                         <!-- Authentication Links -->
                         @guest
@@ -76,36 +82,6 @@
                                 <a class="nav-link" href="{{ route('register') }}">Registro</a>
                             </li>
                         @endguest
-
-
-                        @auth
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                @if(Auth::user()->profile_photo)
-                                    <img src="{{ asset('storage/profile-photos/' . Auth::user()->profile_photo) }}" alt="Perfil" class="rounded-circle" width="30" height="30" style="margin-right: 8px;">
-                                @else
-                                    <img src="{{ asset('img/default_profile.png') }}" alt="Perfil" class="rounded-circle" width="30" height="30" style="margin-right: 8px;">
-                                @endif
-                                    {{ Auth::user()->name }}
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('perfil.edit') }}">
-                                        Perfil
-                                    </a>
-
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        Cerrar sesión
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endauth
                     </ul>
                 </div>
             </div>
@@ -115,5 +91,8 @@
             @yield('content')
         </main>
     </div>
+
+    <!-- Agregar Scripts de Bootstrap si es necesario -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
