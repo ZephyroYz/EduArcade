@@ -22,6 +22,13 @@ class AppServiceProvider extends ServiceProvider
     {
         if (config('app.env') === 'production') {
             URL::forceScheme('https');
+    
+            // Asegurar que Laravel detecte correctamente los encabezados de proxy
+            \Illuminate\Support\Facades\Request::setTrustedProxies(
+                [Request::server('REMOTE_ADDR')],
+                Request::HEADER_X_FORWARDED_ALL
+            );
         }
     }
+    
 }
