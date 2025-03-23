@@ -3,7 +3,6 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Support\Facades\URL;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -20,15 +19,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        // Forzar el uso de HTTPS si estamos en producción
         if (config('app.env') === 'production') {
             URL::forceScheme('https');
-    
-            // Asegurar que Laravel detecte correctamente los encabezados de proxy
-            \Illuminate\Support\Facades\Request::setTrustedProxies(
-                [Request::server('REMOTE_ADDR')],
-                Request::HEADER_X_FORWARDED_ALL
-            );
         }
     }
-    
 }
