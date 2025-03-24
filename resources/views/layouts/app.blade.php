@@ -58,18 +58,9 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
                         @auth
+                            <!-- Enlace de Soporte -->
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('perfil.edit') }}">Perfil</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('logout') }}"
-                                    onclick="event.preventDefault();
-                                    document.getElementById('logout-form').submit();">
-                                    Cerrar sesión
-                                </a>
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                    @csrf
-                                </form>
+                                <a class="nav-link" href="{{ route('soporte') }}">Soporte</a>
                             </li>
                         @endauth
 
@@ -82,6 +73,36 @@
                                 <a class="nav-link" href="{{ route('register') }}">Registro</a>
                             </li>
                         @endguest
+
+                        @auth
+                            <!-- Enlace de Perfil y Logout -->
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    @if(Auth::user()->profile_photo)
+                                        <img src="{{ asset('storage/profile-photos/' . Auth::user()->profile_photo) }}" alt="Perfil" class="rounded-circle" width="30" height="30" style="margin-right: 8px;">
+                                    @else
+                                        <img src="{{ asset('img/default_profile.png') }}" alt="Perfil" class="rounded-circle" width="30" height="30" style="margin-right: 8px;">
+                                    @endif
+                                    {{ Auth::user()->name }}
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('perfil.edit') }}">
+                                        Perfil
+                                    </a>
+
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                       document.getElementById('logout-form').submit();">
+                                        Cerrar sesión
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </li>
+                        @endauth
                     </ul>
                 </div>
             </div>
@@ -96,3 +117,24 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+
+<style>
+    .floating-profile-menu {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 1000;
+    }
+
+    .profile-icon {
+        background-color: #007bff;
+        padding: 10px;
+        border-radius: 50%;
+    }
+
+    .dropdown-menu {
+        width: 150px;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+</style>
