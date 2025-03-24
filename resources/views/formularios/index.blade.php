@@ -1,4 +1,80 @@
 <style>
+        <>
+        .tab-cards {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .flip-card {
+            background-color: transparent;
+            width: 190px;
+            height: 254px;
+            perspective: 1000px;
+            font-family: sans-serif;
+            cursor: pointer;
+        }
+
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+        }
+
+        .flip-card:hover .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .flip-card-front, .flip-card-back {
+            box-shadow: 0 8px 14px 0 rgba(0, 0, 0, 0.2);
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            border-radius: 1rem;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .flip-card-front {
+            background-color: lightgray;
+            color: coral;
+        }
+
+        .flip-card-back {
+            color: white;
+            transform: rotateY(180deg);
+        }
+
+        .flip-card:nth-child(1) .flip-card-back {
+            background: linear-gradient(120deg, lightblue 30%, blue 88%, aliceblue 40%, skyblue 78%);
+        }
+
+        .flip-card:nth-child(2) .flip-card-back {
+            background: linear-gradient(120deg, lightgreen 30%, green 88%, honeydew 40%, palegreen 78%);
+        }
+
+        .flip-card:nth-child(3) .flip-card-back {
+            background: linear-gradient(120deg, lightcoral 30%, red 88%, mistyrose 40%, salmon 78%);
+        }
+
+        .title {
+            font-size: 1.5em;
+            font-weight: 900;
+            text-align: center;
+            margin: 0;
+            color: white;
+        }
+
+
+
     /* Fondo con la imagen Back2.img */
     .fondo-inicio {
         background-image: url('/img/Back2.jpeg'); /* Ruta de tu imagen */
@@ -67,32 +143,29 @@
         <h1>Bienvenido a la página de formularios</h1>
 
         <div class="tab-cards" style="display: flex; justify-content: center; gap: 20px;">
-  <div class="flip-card tab-card" onclick="openTab(event, 'Lenguas')" style="background-color: transparent; width: 190px; height: 254px; perspective: 1000px; font-family: sans-serif; cursor: pointer;">
-    <div class="flip-card-inner" style="position: relative; width: 100%; height: 100%; text-align: center; transition: transform 0.8s; transform-style: preserve-3d;">
-      <div class="flip-card-front" style="background-image: url('url_de_tu_imagen_lenguas.jpg'); box-shadow: 0 8px 14px 0 rgba(0, 0, 0, 0.2); position: absolute; display: flex; flex-direction: column; justify-content: center; width: 100%; height: 100%; -webkit-backface-visibility: hidden; backface-visibility: hidden; border-radius: 1rem; background-size: cover; background-position: center; background-color: lightgray; color: coral;">
-        </div>
-      <div class="flip-card-back" style="background: linear-gradient(120deg, lightblue 30%, blue 88%, aliceblue 40%, skyblue 78%); color: white; transform: rotateY(180deg); box-shadow: 0 8px 14px 0 rgba(0, 0, 0, 0.2); position: absolute; display: flex; flex-direction: column; justify-content: center; width: 100%; height: 100%; -webkit-backface-visibility: hidden; backface-visibility: hidden; border-radius: 1rem;">
-        <p class="title" style="font-size: 1.5em; font-weight: 900; text-align: center; margin: 0; color: white;">Lenguas</p>
+  <div class="flip-card tab-card" onclick="openTab(event, 'Lenguas')">
+    <div class="flip-card-inner">
+      <div class="flip-card-front" style="background-image: url('url_de_tu_imagen_lenguas.jpg');"></div>
+      <div class="flip-card-back">
+        <p class="title">Lenguas</p>
       </div>
     </div>
   </div>
 
-  <div class="flip-card tab-card" onclick="openTab(event, 'Matematicas')" style="background-color: transparent; width: 190px; height: 254px; perspective: 1000px; font-family: sans-serif; cursor: pointer;">
-    <div class="flip-card-inner" style="position: relative; width: 100%; height: 100%; text-align: center; transition: transform 0.8s; transform-style: preserve-3d;">
-      <div class="flip-card-front" style="background-image: url('url_de_tu_imagen_matematicas.jpg'); box-shadow: 0 8px 14px 0 rgba(0, 0, 0, 0.2); position: absolute; display: flex; flex-direction: column; justify-content: center; width: 100%; height: 100%; -webkit-backface-visibility: hidden; backface-visibility: hidden; border-radius: 1rem; background-size: cover; background-position: center; background-color: lightgray; color: coral;">
-        </div>
-      <div class="flip-card-back" style="background: linear-gradient(120deg, lightgreen 30%, green 88%, honeydew 40%, palegreen 78%); color: white; transform: rotateY(180deg); box-shadow: 0 8px 14px 0 rgba(0, 0, 0, 0.2); position: absolute; display: flex; flex-direction: column; justify-content: center; width: 100%; height: 100%; -webkit-backface-visibility: hidden; backface-visibility: hidden; border-radius: 1rem;">
-        <p class="title" style="font-size: 1.5em; font-weight: 900; text-align: center; margin: 0; color: white;">Matemáticas</p>
+  <div class="flip-card tab-card" onclick="openTab(event, 'Matematicas')">
+    <div class="flip-card-inner">
+      <div class="flip-card-front" style="background-image: url('url_de_tu_imagen_matematicas.jpg');"></div>
+      <div class="flip-card-back">
+        <p class="title">Matemáticas</p>
       </div>
     </div>
   </div>
 
-  <div class="flip-card tab-card" onclick="openTab(event, 'Ciencias')" style="background-color: transparent; width: 190px; height: 254px; perspective: 1000px; font-family: sans-serif; cursor: pointer;">
-    <div class="flip-card-inner" style="position: relative; width: 100%; height: 100%; text-align: center; transition: transform 0.8s; transform-style: preserve-3d;">
-      <div class="flip-card-front" style="background-image: url('url_de_tu_imagen_ciencias.jpg'); box-shadow: 0 8px 14px 0 rgba(0, 0, 0, 0.2); position: absolute; display: flex; flex-direction: column; justify-content: center; width: 100%; height: 100%; -webkit-backface-visibility: hidden; backface-visibility: hidden; border-radius: 1rem; background-size: cover; background-position: center; background-color: lightgray; color: coral;">
-        </div>
-      <div class="flip-card-back" style="background: linear-gradient(120deg, lightcoral 30%, red 88%, mistyrose 40%, salmon 78%); color: white; transform: rotateY(180deg); box-shadow: 0 8px 14px 0 rgba(0, 0, 0, 0.2); position: absolute; display: flex; flex-direction: column; justify-content: center; width: 100%; height: 100%; -webkit-backface-visibility: hidden; backface-visibility: hidden; border-radius: 1rem;">
-        <p class="title" style="font-size: 1.5em; font-weight: 900; text-align: center; margin: 0; color: white;">Ciencias</p>
+  <div class="flip-card tab-card" onclick="openTab(event, 'Ciencias')">
+    <div class="flip-card-inner">
+      <div class="flip-card-front" style="background-image: url('url_de_tu_imagen_ciencias.jpg');"></div>
+      <div class="flip-card-back">
+        <p class="title">Ciencias</p>
       </div>
     </div>
   </div>
