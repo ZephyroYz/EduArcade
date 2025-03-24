@@ -48,16 +48,6 @@
                 <input type="email" class="form-control" id="email" name="email" value="{{ old('email', $user->email) }}" required>
             </div>
 
-            <div class="mb-3">
-                <label for="profile_photo" class="form-label">Foto de Perfil</label>
-                <input type="file" class="form-control" id="profile_photo" name="profile_photo">
-                <div class="mt-3">
-                    <!-- Si el usuario tiene foto de perfil, mostrarla, si no, mostrar la foto predeterminada -->
-                    <img src="{{ $user->profile_photo ? asset('storage/profile-photos/' . $user->profile_photo) : asset('storage/profile-photos/guest.jpg') }}" alt="Foto de Perfil" style="max-width: 150px;">
-
-                </div>
-            </div>
-
             <hr>
 
             <h4>Cambiar Contraseña</h4>
