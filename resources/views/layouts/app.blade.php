@@ -78,11 +78,8 @@
                             <!-- Enlace de Perfil y Logout -->
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    @if(Auth::user()->profile_photo)
-                                        <img src="{{ asset('img/guest.png') }}" alt="Perfil" class="rounded-circle" width="30" height="30" style="margin-right: 8px;">
-                                    @else
-                                        <img src="{{ asset('img/default_profile.png') }}" alt="Perfil" class="rounded-circle" width="30" height="30" style="margin-right: 8px;">
-                                    @endif
+                                    <!-- Usar imagen fija de perfil -->
+                                    <img src="{{ asset('img/guest.png') }}" alt="Perfil" class="rounded-circle" width="30" height="30" style="margin-right: 8px;">
                                     {{ Auth::user()->name }}
                                 </a>
 
