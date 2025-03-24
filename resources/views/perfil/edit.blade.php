@@ -53,7 +53,8 @@
                 <input type="file" class="form-control" id="profile_photo" name="profile_photo">
                 <div class="mt-3">
                     <!-- Si el usuario tiene foto de perfil, mostrarla, si no, mostrar la foto predeterminada -->
-                    <img src="{{ $user->profile_photo ? url('storage/profile-photos/' . $user->profile_photo) : url('storage/profile-photos/guest.jpg') }}" alt="Foto de Perfil" style="max-width: 150px;">
+                    <img src="{{ $user->profile_photo ? asset('storage/profile-photos/' . $user->profile_photo) : asset('storage/profile-photos/guest.jpg') }}" alt="Foto de Perfil" style="max-width: 150px;">
+
                 </div>
             </div>
 
