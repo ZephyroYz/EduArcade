@@ -65,13 +65,38 @@
     <!-- Cuadro blanco con fondo color -->
     <div class="scroll-container">
         <h1>Bienvenido a la página de formularios</h1>
-        <p>Esto solo es una demostración c: </p>
 
-        <div class="tab">
-            <button class="tablinks" onclick="openTab(event, 'Lenguas')">Lenguas</button>
-            <button class="tablinks" onclick="openTab(event, 'Matematicas')">Matemáticas</button>
-            <button class="tablinks" onclick="openTab(event, 'Ciencias')">Ciencias</button>
+        <div class="tab-cards" style="display: flex; justify-content: center; gap: 20px;">
+  <div class="flip-card tab-card" onclick="openTab(event, 'Lenguas')" style="background-color: transparent; width: 190px; height: 254px; perspective: 1000px; font-family: sans-serif; cursor: pointer;">
+    <div class="flip-card-inner" style="position: relative; width: 100%; height: 100%; text-align: center; transition: transform 0.8s; transform-style: preserve-3d;">
+      <div class="flip-card-front" style="background-image: url('url_de_tu_imagen_lenguas.jpg'); box-shadow: 0 8px 14px 0 rgba(0, 0, 0, 0.2); position: absolute; display: flex; flex-direction: column; justify-content: center; width: 100%; height: 100%; -webkit-backface-visibility: hidden; backface-visibility: hidden; border-radius: 1rem; background-size: cover; background-position: center; background-color: lightgray; color: coral;">
         </div>
+      <div class="flip-card-back" style="background: linear-gradient(120deg, lightblue 30%, blue 88%, aliceblue 40%, skyblue 78%); color: white; transform: rotateY(180deg); box-shadow: 0 8px 14px 0 rgba(0, 0, 0, 0.2); position: absolute; display: flex; flex-direction: column; justify-content: center; width: 100%; height: 100%; -webkit-backface-visibility: hidden; backface-visibility: hidden; border-radius: 1rem;">
+        <p class="title" style="font-size: 1.5em; font-weight: 900; text-align: center; margin: 0; color: white;">Lenguas</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="flip-card tab-card" onclick="openTab(event, 'Matematicas')" style="background-color: transparent; width: 190px; height: 254px; perspective: 1000px; font-family: sans-serif; cursor: pointer;">
+    <div class="flip-card-inner" style="position: relative; width: 100%; height: 100%; text-align: center; transition: transform 0.8s; transform-style: preserve-3d;">
+      <div class="flip-card-front" style="background-image: url('url_de_tu_imagen_matematicas.jpg'); box-shadow: 0 8px 14px 0 rgba(0, 0, 0, 0.2); position: absolute; display: flex; flex-direction: column; justify-content: center; width: 100%; height: 100%; -webkit-backface-visibility: hidden; backface-visibility: hidden; border-radius: 1rem; background-size: cover; background-position: center; background-color: lightgray; color: coral;">
+        </div>
+      <div class="flip-card-back" style="background: linear-gradient(120deg, lightgreen 30%, green 88%, honeydew 40%, palegreen 78%); color: white; transform: rotateY(180deg); box-shadow: 0 8px 14px 0 rgba(0, 0, 0, 0.2); position: absolute; display: flex; flex-direction: column; justify-content: center; width: 100%; height: 100%; -webkit-backface-visibility: hidden; backface-visibility: hidden; border-radius: 1rem;">
+        <p class="title" style="font-size: 1.5em; font-weight: 900; text-align: center; margin: 0; color: white;">Matemáticas</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="flip-card tab-card" onclick="openTab(event, 'Ciencias')" style="background-color: transparent; width: 190px; height: 254px; perspective: 1000px; font-family: sans-serif; cursor: pointer;">
+    <div class="flip-card-inner" style="position: relative; width: 100%; height: 100%; text-align: center; transition: transform 0.8s; transform-style: preserve-3d;">
+      <div class="flip-card-front" style="background-image: url('url_de_tu_imagen_ciencias.jpg'); box-shadow: 0 8px 14px 0 rgba(0, 0, 0, 0.2); position: absolute; display: flex; flex-direction: column; justify-content: center; width: 100%; height: 100%; -webkit-backface-visibility: hidden; backface-visibility: hidden; border-radius: 1rem; background-size: cover; background-position: center; background-color: lightgray; color: coral;">
+        </div>
+      <div class="flip-card-back" style="background: linear-gradient(120deg, lightcoral 30%, red 88%, mistyrose 40%, salmon 78%); color: white; transform: rotateY(180deg); box-shadow: 0 8px 14px 0 rgba(0, 0, 0, 0.2); position: absolute; display: flex; flex-direction: column; justify-content: center; width: 100%; height: 100%; -webkit-backface-visibility: hidden; backface-visibility: hidden; border-radius: 1rem;">
+        <p class="title" style="font-size: 1.5em; font-weight: 900; text-align: center; margin: 0; color: white;">Ciencias</p>
+      </div>
+    </div>
+  </div>
+</div>
 
         <div id="Lenguas" class="tabcontent">
             <h2>Lenguas</h2>
