@@ -145,7 +145,7 @@
         <div class="tab-cards" style="display: flex; justify-content: center; gap: 20px;">
   <div class="flip-card tab-card" onclick="openTab(event, 'Lenguas')">
     <div class="flip-card-inner">
-      <div class="flip-card-front" style="background-image: url('{{ asset('img/LengC.png') }}');"></div>
+      <div class="flip-card-front" style="background-image: url('{{ asset('img/LengC.png') }}'); image-rendering: pixelated;"></div>
       <div class="flip-card-back">
         <p class="title">Lenguas</p>
       </div>
