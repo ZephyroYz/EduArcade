@@ -154,7 +154,7 @@
 
   <div class="flip-card tab-card" onclick="openTab(event, 'Matematicas')">
     <div class="flip-card-inner">
-      <div class="flip-card-front" style="background-image: url('url_de_tu_imagen_matematicas.jpg');"></div>
+      <div class="flip-card-front" style="background-image: url('{{ asset('img/MatC.png') }}'); image-rendering: pixelated;"></div>
       <div class="flip-card-back">
         <p class="title">Matemáticas</p>
       </div>
@@ -163,7 +163,7 @@
 
   <div class="flip-card tab-card" onclick="openTab(event, 'Ciencias')">
     <div class="flip-card-inner">
-      <div class="flip-card-front" style="background-image: url('url_de_tu_imagen_ciencias.jpg');"></div>
+      <div class="flip-card-front" style="background-image: url('{{ asset('img/CienC.png') }}'); image-rendering: pixelated;"></div>
       <div class="flip-card-back">
         <p class="title">Ciencias</p>
       </div>
