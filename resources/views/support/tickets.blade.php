@@ -12,11 +12,11 @@
     <!-- Lista de tickets -->
     <div class="ticket-list">
         @foreach($tickets as $ticket)
-            <div class="ticket" onclick="openChat({{ $ticket->id }})">
+            <div class="ticket" data-ticket-id="{{ $ticket->id }}">
                 <p><strong>Usuario:</strong> {{ $ticket->user->name }} </p>
                 <p><strong>Estado:</strong> {{ $ticket->status }}</p>
                 <p><strong>Mensaje:</strong> {{ Str::limit($ticket->user_message, 50) }}</p>
-                <button class="open-chat-btn" onclick="openChat({{ $ticket->id }})">Ver y Responder</button>
+                <button class="open-chat-btn">Ver y Responder</button>
             </div>
         @endforeach
     </div>
@@ -53,23 +53,37 @@
 @endsection
 
 <script>
+    // Función para abrir el chat/modal con la información del ticket
+    document.querySelectorAll('.open-chat-btn').forEach(button => {
+        button.addEventListener('click', function () {
+            const ticketId = this.closest('.ticket').getAttribute('data-ticket-id');
+            openChat(ticketId);
+        });
+    });
+
     function openChat(ticketId) {
         let modal = document.getElementById('chatModal');
         let chatContent = document.getElementById('chatContent');
         let responseForm = document.getElementById('responseForm');
         
+        // Obtener el ticket desde el servidor usando fetch
         fetch(`/admin/getTicket/${ticketId}`)
             .then(response => response.json())
             .then(data => {
+                // Insertar los datos en el modal
                 chatContent.innerHTML = `
                     <p><strong>Usuario:</strong> ${data.user.name}</p>
                     <p><strong>Mensaje:</strong> ${data.user_message}</p>
                     <p><strong>Respuesta:</strong> ${data.response || 'Aún sin respuesta'}</p>`;
+                // Actualizar el action del formulario
                 responseForm.action = `/admin/respondTicket/${ticketId}`;
+                // Mostrar el modal
                 modal.style.display = "block";
-            });
+            })
+            .catch(error => console.error('Error al obtener el ticket:', error));
     }
 
+    // Función para cerrar el modal
     function closeChat() {
         document.getElementById('chatModal').style.display = "none";
     }
