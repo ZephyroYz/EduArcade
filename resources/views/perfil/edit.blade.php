@@ -51,7 +51,7 @@
                         <img src="{{ asset('img/profile-icons/guest.jpg') }}" alt="Imagen predeterminada" class="img-thumbnail rounded-circle profile-photo-option" style="cursor: pointer; width: 80px; height: 80px;" onclick="selectProfileImage('guest.jpg')">
                     </div>
                 </div>
-                <input type="hidden" id="selected_profile_photo" name="selected_profile_photo" value="{{ old('selected_profile_photo', $user->profile_photo ?? 'guest.jpg') }}">
+                <input type="hidden" id="selected_profile_photo" name="selected_profile_photo" value="{{ old('selected_profile_photo', $user->profile_photo ?: 'guest.jpg') }}">
             </div>
 
             <hr>
@@ -92,11 +92,15 @@
         if (selectedImage) {
             selectedImage.style.border = '2px solid #007bff'; // Resaltar la imagen seleccionada
         }
+
+        // Cambiar la imagen de previsualización
+        const profileImagePreview = document.getElementById('profile-image-preview');
+        profileImagePreview.src = "{{ asset('img/profile-icons/') }}/" + imageName;
     }
 
     // Previsualizar la imagen seleccionada
     document.addEventListener('DOMContentLoaded', function() {
-        const selectedImage = "{{ old('selected_profile_photo', $user->profile_photo ?? 'guest.jpg') }}";
+        const selectedImage = "{{ old('selected_profile_photo', $user->profile_photo ?: 'guest.jpg') }}";
         selectProfileImage(selectedImage);
     });
 </script>
