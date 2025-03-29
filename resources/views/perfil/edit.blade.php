@@ -42,11 +42,16 @@
                 <div class="d-flex">
                     @foreach(['icon1.png', 'icon2.png', 'icon3.png', 'icon4.png', 'icon5.png'] as $icon)
                         <div class="p-2">
-                            <img src="{{ asset('img/profile-icons/' . $icon) }}" alt="Icono de perfil" class="img-thumbnail rounded-circle" style="cursor: pointer; width: 80px; height: 80px;" onclick="selectProfileImage('{{ $icon }}')">
+                            <img src="{{ asset('img/profile-icons/' . $icon) }}" alt="Icono de perfil" class="img-thumbnail rounded-circle profile-photo-option" style="cursor: pointer; width: 80px; height: 80px;" onclick="selectProfileImage('{{ $icon }}')">
                         </div>
                     @endforeach
+
+                    <!-- Imagen predeterminada -->
+                    <div class="p-2">
+                        <img src="{{ asset('img/profile-icons/guest.jpg') }}" alt="Imagen predeterminada" class="img-thumbnail rounded-circle profile-photo-option" style="cursor: pointer; width: 80px; height: 80px;" onclick="selectProfileImage('guest.jpg')">
+                    </div>
                 </div>
-                <input type="hidden" id="selected_profile_photo" name="selected_profile_photo" value="{{ old('selected_profile_photo', $user->profile_photo) }}">
+                <input type="hidden" id="selected_profile_photo" name="selected_profile_photo" value="{{ old('selected_profile_photo', $user->profile_photo ?? 'guest.jpg') }}">
             </div>
 
             <hr>
@@ -77,11 +82,25 @@
         // Actualizar el valor del input oculto con el nombre de la imagen seleccionada
         document.getElementById('selected_profile_photo').value = imageName;
 
-        // Mostrar la imagen seleccionada en formato círculo
-        const profileImagePreview = document.getElementById('profile-image-preview');
-        profileImagePreview.src = "{{ asset('img/profile-icons/') }}/" + imageName;
+        // Eliminar borde de todas las imágenes
+        document.querySelectorAll('.profile-photo-option').forEach(function (item) {
+            item.style.border = '';
+        });
+
+        // Agregar borde a la imagen seleccionada
+        const selectedImage = Array.from(document.querySelectorAll('.profile-photo-option')).find(img => img.src.includes(imageName));
+        if (selectedImage) {
+            selectedImage.style.border = '2px solid #007bff'; // Resaltar la imagen seleccionada
+        }
     }
+
+    // Previsualizar la imagen seleccionada
+    document.addEventListener('DOMContentLoaded', function() {
+        const selectedImage = "{{ old('selected_profile_photo', $user->profile_photo ?? 'guest.jpg') }}";
+        selectProfileImage(selectedImage);
+    });
 </script>
+
 @endsection
 
 <style>
@@ -97,10 +116,13 @@
         color: black;
     }
 
-    #profile-image-preview {
-        width: 100px;
-        height: 100px;
-        border-radius: 50%;
-        margin-top: 10px;
+    /* Previsualización de la imagen de perfil */
+    .profile-photo-option {
+        transition: border 0.3s ease;
+    }
+
+    /* Previsualización del borde de la imagen seleccionada */
+    .profile-photo-option:hover {
+        border: 2px solid #007bff;
     }
 </style>
