@@ -1,17 +1,3 @@
-<style>
-    /* Fondo con la imagen Back2.img */
-    .fondo-inicio {
-        background-image: url('/img/Back2.jpeg'); /* Ruta de tu imagen */
-        background-size: cover;
-        background-position: center;
-        height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        color: black;
-    }
-</style>
-
 @extends('layouts.app')
 
 @section('content')
@@ -50,6 +36,21 @@
 
             <hr>
 
+            <h4>Foto de Perfil</h4>
+            <div class="mb-3">
+                <label for="profile_photo" class="form-label">Selecciona una imagen</label>
+                <div class="d-flex">
+                    @foreach(['icon1.png', 'icon2.png', 'icon3.png', 'icon4.png', 'icon5.png'] as $icon)
+                        <div class="p-2">
+                            <img src="{{ asset('img/profile-icons/' . $icon) }}" alt="Icono de perfil" class="img-thumbnail rounded-circle" style="cursor: pointer; width: 80px; height: 80px;" onclick="selectProfileImage('{{ $icon }}')">
+                        </div>
+                    @endforeach
+                </div>
+                <input type="hidden" id="selected_profile_photo" name="selected_profile_photo" value="{{ old('selected_profile_photo', $user->profile_photo) }}">
+            </div>
+
+            <hr>
+
             <h4>Cambiar Contraseña</h4>
             <div class="mb-3">
                 <label for="current_password" class="form-label">Contraseña Actual</label>
@@ -70,4 +71,36 @@
         </form>
     </div>
 </div>
+
+<script>
+    function selectProfileImage(imageName) {
+        // Actualizar el valor del input oculto con el nombre de la imagen seleccionada
+        document.getElementById('selected_profile_photo').value = imageName;
+
+        // Mostrar la imagen seleccionada en formato círculo
+        const profileImagePreview = document.getElementById('profile-image-preview');
+        profileImagePreview.src = "{{ asset('img/profile-icons/') }}/" + imageName;
+    }
+</script>
 @endsection
+
+<style>
+    /* Fondo con la imagen Back2.img */
+    .fondo-inicio {
+        background-image: url('/img/Back2.jpeg'); /* Ruta de tu imagen */
+        background-size: cover;
+        background-position: center;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: black;
+    }
+
+    #profile-image-preview {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        margin-top: 10px;
+    }
+</style>

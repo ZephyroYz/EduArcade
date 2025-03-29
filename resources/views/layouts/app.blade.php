@@ -78,8 +78,8 @@
                             <!-- Enlace de Perfil y Logout -->
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    <!-- Usar imagen fija de perfil -->
-                                    
+                                    <!-- Mostrar imagen de perfil si existe -->
+                                    <img src="{{ asset('img/profile-icons/' . Auth::user()->profile_photo) }}" alt="Foto de perfil" class="img-thumbnail rounded-circle" style="width: 40px; height: 40px; object-fit: cover;">
                                     {{ Auth::user()->name }}
                                 </a>
 
@@ -132,6 +132,25 @@
     .dropdown-menu {
         width: 150px;
         border-radius: 10px;
+    }
+
+    .floating-profile-menu {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 1000;
+    }
+
+    .profile-icon {
+        background-color: #007bff;
+        padding: 10px;
+        border-radius: 50%;
+    }
+
+    .dropdown-menu {
+        width: 150px;
+        border-radius: 10px;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
+
 </style>

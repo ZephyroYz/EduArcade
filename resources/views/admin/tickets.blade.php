@@ -8,7 +8,6 @@
             <div class="ticket-card">
                 <p><strong>Usuario:</strong> {{ $ticket->user->name }}</p>
                 <p><strong>Estado:</strong> {{ ucfirst($ticket->status) }}</p>
-                <p><strong>Fecha de Creación:</strong> {{ $ticket->created_at->format('d/m/Y H:i') }} <br> <!-- Aquí agregamos la fecha --></p>
                 <button class="open-modal" data-ticket-id="{{ $ticket->id }}">Responder</button>
             </div>
 

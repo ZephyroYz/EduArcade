@@ -4,26 +4,19 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
+use App\Models\User;
 
 class PerfilController extends Controller
 {
-    public function edit()
-    {
-        $user = Auth::user();
-        return view('perfil.edit', compact('user'));
-    }
-
     public function update(Request $request)
     {
         $user = Auth::user();
 
         $request->validate([
-            'name' => 'required|string|max:255',
+            'name' => 'required|string|max:15',
             'email' => 'required|string|email|max:255|unique:users,email,' . $user->id,
-            'profile_photo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'selected_profile_photo' => 'nullable|string|in:icon1.png,icon2.png,icon3.png,icon4.png,icon5.png',
             'current_password' => 'nullable|required_with:new_password|min:6',
             'new_password' => [
                 'nullable',
@@ -48,16 +41,9 @@ class PerfilController extends Controller
         }
 
         // Manejar la actualización de la foto de perfil
-        if ($request->hasFile('profile_photo')) {
-            if ($user->profile_photo) {
-                Storage::delete('public/profile-photos/' . $user->profile_photo);
-            }
-
-            $imageName = time() . '.' . $request->profile_photo->extension();
-            $request->profile_photo->storeAs('profile-photos', $imageName, 'public');
-
+        if ($request->filled('selected_profile_photo')) {
             $user->update([
-                'profile_photo' => $imageName,
+                'profile_photo' => $request->selected_profile_photo,
             ]);
         }
 
