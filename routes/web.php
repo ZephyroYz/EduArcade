@@ -67,3 +67,4 @@ Route::middleware(['auth', 'can:is-admin'])->group(function () {
     // Ruta para actualizar los roles
     Route::post('/admin/update-roles', [UserController::class, 'updateUserRoles'])->name('admin.updateRole');
 });
+

@@ -32,6 +32,12 @@
         <!-- Botón de contacto (solo si está autenticado) -->
         @auth
          <a href="{{ route('support.tickets') }}" class="btn btn-primary">Contactar</a>
+
+         <!-- Botón de tickets (solo si es admin) -->
+        @can('is-admin')
+            <a href="{{ route('admin.tickets') }}" class="btn btn-warning">Panel de Tickets</a>
+        @endcan
+
         @else
             <p>Por favor, <a href="{{ route('login') }}">inicia sesión</a> para poder contactarnos.</p>
         @endauth
