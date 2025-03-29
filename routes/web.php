@@ -56,10 +56,15 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/support/ticket', [TicketController::class, 'createTicket'])->name('support.createTicket');
 });
 
+// routes/web.php
+
 // Rutas para los tickets de soporte (administradores)
 Route::middleware(['auth', 'can:is-admin'])->group(function () {
+    Route::get('/admin/ticket/{ticketId}', [TicketController::class, 'getTicket'])->name('admin.getTicket');
     Route::get('/admin/tickets', [TicketController::class, 'showAdminTickets'])->name('admin.tickets');
     Route::post('/admin/ticket/{ticketId}/respond', [TicketController::class, 'respondTicket'])->name('admin.respondTicket');
+;
+
 
     // Ruta para mostrar el formulario de asignación de roles
     Route::get('/admin/assign-roles', [UserController::class, 'showAssignRolesForm'])->name('admin.assignRoles');
@@ -67,4 +72,6 @@ Route::middleware(['auth', 'can:is-admin'])->group(function () {
     // Ruta para actualizar los roles
     Route::post('/admin/update-roles', [UserController::class, 'updateUserRoles'])->name('admin.updateRole');
 });
+
+
 
