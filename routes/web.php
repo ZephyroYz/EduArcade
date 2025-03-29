@@ -8,8 +8,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SupportController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\TicketController;
-use Illuminate\Support\Facades\Response;
-use Illuminate\Support\Facades\Storage;
+use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Auth;
 
 // Ruta principal
 Route::get('/', function () {
@@ -37,28 +37,11 @@ Route::middleware(['auth'])->group(function () {
     
     // Ruta para la descarga
     Route::get('/descarga', [DescargaController::class, 'index'])->name('descarga');
-
-
-
-
     
     // Rutas para Soporte
-    Route::middleware('auth')->get('/soporte', [SupportController::class, 'show'])->name('soporte');
-
     Route::get('/soporte', [SupportController::class, 'show'])->name('soporte');
 
-
     Route::get('/contacto', [ContactController::class, 'show'])->name('contacto');
-
-
-
-    // Rutas para perfil o foto eso
-    route::middleware(['auth'])->group(function () {
-        Route::get('/perfil', [PerfilController::class, 'edit'])->name('perfil.edit');
-        Route::post('/perfil', [PerfilController::class, 'update'])->name('perfil.update');
-    });
-
-
 
     // Rutas para el chat de soporte (tickets)
     Route::middleware('auth')->group(function () {
@@ -68,21 +51,19 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/chatsoporte/{ticket}/cerrar', [TicketController::class, 'cerrar']);
     });
 
+    // Rutas para los tickets de soporte (usuarios)
+    Route::get('/support/tickets', [TicketController::class, 'showUserTickets'])->name('support.tickets');
+    Route::post('/support/ticket', [TicketController::class, 'createTicket'])->name('support.createTicket');
+});
 
-    // Ruta para descargar el software
+// Rutas para los tickets de soporte (administradores)
+Route::middleware(['auth', 'can:is-admin'])->group(function () {
+    Route::get('/admin/tickets', [TicketController::class, 'showAdminTickets'])->name('admin.tickets');
+    Route::post('/admin/ticket/{ticketId}/respond', [TicketController::class, 'respondTicket'])->name('admin.respondTicket');
 
-    Route::get('/descargar-software', function () {
-        $filePath = public_path('descargas/PruebaEduBeaver.zip');
+    // Ruta para mostrar el formulario de asignación de roles
+    Route::get('/admin/assign-roles', [UserController::class, 'showAssignRolesForm'])->name('admin.assignRoles');
     
-        if (!file_exists($filePath)) {
-            abort(404, 'Archivo no encontrado.');
-        }
-    
-        return Response::download($filePath, 'PruebaEduBeaver.zip');
-    })->name('descargar.software');
-    
-
-    
-    
-
+    // Ruta para actualizar los roles
+    Route::post('/admin/update-roles', [UserController::class, 'updateUserRoles'])->name('admin.updateRole');
 });
