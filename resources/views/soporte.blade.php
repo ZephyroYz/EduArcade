@@ -31,7 +31,7 @@
 
         <!-- Botón de contacto (solo si está autenticado) -->
         @auth
-        <a href="{{ route('chatsoporte') }}" class="btn btn-primary">Contactar</a>
+         <a href="{{ route('support.tickets') }}" class="btn btn-primary">Contactar</a>
         @else
             <p>Por favor, <a href="{{ route('login') }}">inicia sesión</a> para poder contactarnos.</p>
         @endauth
