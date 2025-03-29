@@ -16,6 +16,7 @@
                     <strong>Mensaje:</strong> {{ Str::limit($ticket->user_message, 50) }} <br>
                     <strong>Estado:</strong> {{ $ticket->status }} <br>
                     <strong>Respuesta:</strong> {{ $ticket->response ?? 'Aún sin respuesta' }} <br>
+                    <strong>Fecha de Creación:</strong> {{ $ticket->created_at->format('d/m/Y H:i') }} <br> <!-- Aquí agregamos la fecha -->
                 </div>
             </div>
         @endforeach
