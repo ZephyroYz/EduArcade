@@ -68,4 +68,24 @@ class TicketController extends Controller
         // Redirigir al panel de administración con un mensaje de éxito
         return redirect()->route('admin.tickets')->with('success', 'Respuesta enviada correctamente');
     }
+
+    public function getTicket($ticketId)
+    {
+        // Buscar el ticket por ID
+        $ticket = Ticket::with('user')->find($ticketId);
+
+        // Verificar si el ticket existe
+        if ($ticket) {
+            return response()->json([
+                'user_message' => $ticket->user_message,
+                'response' => $ticket->response,
+                'user' => [
+                    'name' => $ticket->user->name,
+                ]
+            ]);
+        }
+
+        // Si no se encuentra el ticket, devolver un error
+        return response()->json(['error' => 'Ticket no encontrado'], 404);
+    }
 }
