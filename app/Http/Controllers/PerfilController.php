@@ -9,10 +9,23 @@ use App\Models\User;
 
 class PerfilController extends Controller
 {
-    public function update(Request $request)
+    // Muestra el formulario de edición del perfil
+    public function edit()
     {
+        // Obtener el usuario autenticado
         $user = Auth::user();
 
+        // Pasar los datos del usuario a la vista
+        return view('perfil.edit', compact('user'));
+    }
+
+    // Actualiza los datos del perfil del usuario
+    public function update(Request $request)
+    {
+        // Obtener el usuario autenticado
+        $user = Auth::user();
+
+        // Validación de los campos del formulario
         $request->validate([
             'name' => 'required|string|max:15',
             'email' => 'required|string|email|max:255|unique:users,email,' . $user->id,
@@ -31,10 +44,12 @@ class PerfilController extends Controller
 
         // Verificar si el usuario quiere cambiar la contraseña
         if ($request->filled('current_password') && $request->filled('new_password')) {
+            // Comprobar si la contraseña actual es correcta
             if (!Hash::check($request->current_password, $user->password)) {
                 return back()->withErrors(['current_password' => 'La contraseña actual no es correcta.']);
             }
             
+            // Actualizar la contraseña
             $user->update([
                 'password' => Hash::make($request->new_password),
             ]);
@@ -53,6 +68,7 @@ class PerfilController extends Controller
             'email' => $request->email,
         ]);
 
+        // Redirigir a la vista de edición con un mensaje de éxito
         return redirect()->route('perfil.edit')->with('success', 'Perfil actualizado correctamente.');
     }
 }
