@@ -110,6 +110,15 @@
         </main>
     </div>
 
+    <!-- Floating Profile Menu -->
+    @auth
+    <div class="floating-profile-menu">
+        <a href="{{ route('perfil.edit') }}" class="profile-icon d-flex justify-content-center align-items-center">
+            <img src="{{ asset('img/profile-icons/' . Auth::user()->profile_photo) }}" alt="Foto de perfil" class="img-thumbnail rounded-circle" style="width: 40px; height: 40px; object-fit: cover;">
+        </a>
+    </div>
+    @endauth
+
     <!-- Agregar Scripts de Bootstrap si es necesario -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
@@ -132,25 +141,6 @@
     .dropdown-menu {
         width: 150px;
         border-radius: 10px;
-    }
-
-    .floating-profile-menu {
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        z-index: 1000;
-    }
-
-    .profile-icon {
-        background-color: #007bff;
-        padding: 10px;
-        border-radius: 50%;
-    }
-
-    .dropdown-menu {
-        width: 150px;
-        border-radius: 10px;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
-
 </style>
