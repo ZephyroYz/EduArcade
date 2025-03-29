@@ -90,7 +90,7 @@
         // Agregar borde a la imagen seleccionada
         const selectedImage = Array.from(document.querySelectorAll('.profile-photo-option')).find(img => img.src.includes(imageName));
         if (selectedImage) {
-            selectedImage.style.border = '2px solid #007bff'; // Resaltar la imagen seleccionada
+            selectedImage.style.border = '2px solidrgb(0, 255, 76)'; // Resaltar la imagen seleccionada
         }
 
         // Cambiar la imagen de previsualización
