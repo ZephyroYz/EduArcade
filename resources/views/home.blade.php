@@ -27,7 +27,8 @@
     @section('content')
     <div class="fondo-inicio">
         <!-- Cuadro blanco con fondo color -->
-        <div class="container bg-white p-4 rounded shadow" style="background-color: rgba(255, 255, 255, 0.8); margin-left: 150px; margin-right: 450px;">
+        <div class="container bg-white p-4 rounded shadow" style="background-color: rgba(255, 255, 255, 0.8); max-width: 700px; margin: 0 auto;">
+
             <h1>¡Bienvenidos a EduArcade!</h1>
             <p class="text-justify">
                 En EduArcade, el aprendizaje se convierte en una emocionante aventura. Hemos diseñado una plataforma interactiva especialmente para ti, donde las lecciones de matemáticas, ciencias y lenguaje se mezclan con juegos divertidos y educativos. A través de desafiantes rompecabezas, lluvias de palabras, y memoramas, podrás mejorar tus habilidades mientras te diviertes. Nuestro objetivo es ofrecerte una experiencia única que te permita aprender jugando, sin importar si estás en el aula o en casa.
