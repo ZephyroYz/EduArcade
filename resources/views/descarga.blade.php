@@ -32,7 +32,7 @@
 
         
         <a href="{{ asset('descargas/PruebaEduBeaver.zip') }}" class="btn btn-success" download>Descargar EduBeaver</a>
-        <a href="{{ asset('descargas/EduLecV3.1.exe') }}" class="btn btn-success" download>Descargar EduLec</a>
+        <a href="{{ asset('descargas/EduLecV3.1.7z') }}" class="btn btn-success" download>Descargar EduLec</a>
     </div>
 </div>
 @endsection
