@@ -51,6 +51,8 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('compra') }}">Compra</a>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('descarga') }}">Descarga</a>
                             </li>
                         @endauth
                     </ul>
