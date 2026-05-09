@@ -1,0 +1,39 @@
+{
+  "name": "eduarcadelaravel",
+  "version": "1.0.0",
+  "description": "Descripción de tu proyecto o aplicación.",
+  "main": "postcss.config.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ZephyroYz/EduArcadeWebElisyum.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ZephyroYz/EduArcadeWebElisyum/issues"
+  },
+  "homepage": "https://github.com/ZephyroYz/EduArcadeWebElisyum#readme",
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.2.2",
+    "laravel-vite-plugin": "^1.2.0",
+    "sass": "^1.85.1",
+    "sass-embedded": "^1.85.1",
+    "vite": "^6.2.2"
+  },
+  "dependencies": {
+    "autoprefixer": "^10.4.21",
+    "axios": "^1.8.3",
+    "bootstrap": "^5.3.3",
+    "postcss": "^8.5.3"
+  },
+  "type": "module"
+}
