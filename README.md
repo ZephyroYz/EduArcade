@@ -23,21 +23,27 @@ Plataforma web desarrollada con **Laravel 11** para la gestión y descarga de so
    cd EduArcade
    
 ## Instalar dependencias de PHP:
-composer install
+    ```bash
+    composer install
 
 ## Instalar dependencias de Frontend:
-npm install
+    ```bash
+    npm install
 
 ## Configurar el entorno:
-cp .env.example .env
-php artisan key:generate
-(No olvides configurar tu base de datos en el archivo .env)
+    ```bash
+    cp .env.example .env
+    php artisan key:generate
+    (No olvides configurar tu base de datos en el archivo .env)
 
 ## Ejecutar migraciones:
-php artisan migrate
+    ```bash
+    php artisan migrate
 
 ## Compilar assets:
-npm run dev
+    ```bash
+    npm run dev
 
 ## Para levantar el servidor localmente:
-php artisan serve
+    ```bash
+    php artisan serve
