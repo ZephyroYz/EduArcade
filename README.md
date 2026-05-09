@@ -22,22 +22,22 @@ Plataforma web desarrollada con **Laravel 11** para la gestión y descarga de so
    git clone [https://github.com/ZephyroYz/EduArcade.git](https://github.com/ZephyroYz/EduArcade.git)
    cd EduArcade
    
-# Instalar dependencias de PHP:
+## Instalar dependencias de PHP:
 composer install
 
-# Instalar dependencias de Frontend:
+## Instalar dependencias de Frontend:
 npm install
 
-# Configurar el entorno:
+## Configurar el entorno:
 cp .env.example .env
 php artisan key:generate
 (No olvides configurar tu base de datos en el archivo .env)
 
-# Ejecutar migraciones:
+## Ejecutar migraciones:
 php artisan migrate
 
-# Compilar assets:
+## Compilar assets:
 npm run dev
 
-# Para levantar el servidor localmente:
+## Para levantar el servidor localmente:
 php artisan serve
