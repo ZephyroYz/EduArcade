@@ -32,3 +32,10 @@ yarn-error.log
 # Sistema
 .DS_Store
 Thumbs.db
+
+# Archivos pesados y binarios
+/public/descargas/*
+*.exe
+*.zip
+*.7z
+*.pck
