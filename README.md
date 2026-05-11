@@ -1,20 +1,49 @@
-# EduArcade 🎮 
 
-**EduArcade** es una plataforma educativa innovadora que fusiona un robusto backend en **Laravel** con la interactividad de **Godot Engine**. Diseñada como proyecto de titulación, busca gamificar el aprendizaje mediante una arquitectura moderna y escalable.
+# EduArcade Web
 
-## 📝 Descripción
-Este proyecto resuelve la necesidad de integrar contenido pedagógico en un entorno lúdico. No es solo un sitio web, sino un ecosistema donde el progreso del usuario en los videojuegos se sincroniza en tiempo real con su perfil académico.
+Plataforma web desarrollada con **Laravel 11** para la gestión y descarga de software educativo (EduArcade).
 
-### Características Principales
-- **Sincronización de Datos:** Comunicación directa entre videojuegos (Godot) y base de datos (PostgreSQL).
-- **Arquitectura MVC:** Construido sobre Laravel para asegurar un código limpio y mantenible.
-- **Despliegue Continuo:** Configurado con pipelines de CI/CD en Railway (+230 deployments exitosos).
-- **Optimización con IA:** Lógica de negocio y estructuras complejas desarrolladas con el soporte de IA generativa.
+## Características
+* **Gestión de Usuarios:** Sistema de perfiles con roles.
+* **Panel de Soporte:** Sistema de tickets para atención al usuario.
+* **Módulo de Descargas:** Sección dedicada para obtener las últimas versiones de EduArcade.
+* **Frontend Moderno:** Estilizado con SASS y Vite.
 
-## 🛠️ Instalación
+## Requisitos del Sistema
+* PHP >= 8.2
+* Composer
+* Node.js & NPM
+* MySQL / MariaDB
 
-Para montar el entorno de desarrollo local, asegúrate de tener instalado PHP 8.x, Composer y Node.js.
+## Instalación
 
 1. **Clonar el repositorio:**
    ```bash
-   git clone [https://github.com/ZephyroYz/EduArcadeWebElisyum.git](https://github.com/ZephyroYz/EduArcadeWebElisyum.git)
+   git clone [https://github.com/ZephyroYz/EduArcade.git](https://github.com/ZephyroYz/EduArcade.git)
+   cd EduArcade
+   
+## Instalar dependencias de PHP:
+    ```bash
+    composer install
+
+## Instalar dependencias de Frontend:
+    ```bash
+    npm install
+
+## Configurar el entorno:
+    ```bash
+    cp .env.example .env
+    php artisan key:generate
+    (No olvides configurar tu base de datos en el archivo .env)
+
+## Ejecutar migraciones:
+    ```bash
+    php artisan migrate
+
+## Compilar assets:
+    ```bash
+    npm run dev
+
+## Para levantar el servidor localmente:
+    ```bash
+    php artisan serve
